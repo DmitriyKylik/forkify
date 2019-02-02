@@ -10,7 +10,7 @@ const config = require('./config');
 
 const processors = [
     autoprefixer({
-        browsers: ['last 5 versions'],
+        browsers: ['last 4 versions'],
         cascade: false
     }),
     mqpacker({

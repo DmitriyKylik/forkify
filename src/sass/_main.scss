@@ -1,0 +1,44 @@
+.wrapper {
+    font-family: 'Nunito Sans', sans-serif;
+    min-height: 100vh;
+    padding: 1px 0;
+    color: #fff;
+}
+
+.forkify {
+    display: flex;
+    width: 1200px;
+    height: calc(100vh - 100px);
+    margin: 28px auto;
+    &_header {
+        display: flex;
+        flex-basis: 100%;
+        justify-content: space-around;
+        align-items: center;
+        &_logo {
+            width: 150px;
+        }
+    }
+    &_search {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-basis: 40%;
+        padding-left: 20px;
+        border-radius: 30px;
+        background: #fff;
+        &_input_wrap {
+            flex-basis: 80%;
+        }
+        &_input {
+            width: 100%;
+            font-size: 16px;
+            font-family: inherit;
+            &::placeholder {
+                opacity: 0.3;
+                font-weight: 700;
+                font-style: italic;
+            }
+        }
+    }
+}

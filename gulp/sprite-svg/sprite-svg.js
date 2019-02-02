@@ -9,7 +9,6 @@ const through2    = require('through2');
 const consolidate = require('gulp-consolidate');
 const config      = require('../config');
 
-
 gulp.task('sprite:svg', function() {
     return gulp
         .src(`${config.src.iconsSvg}/*.svg`)
@@ -34,10 +33,14 @@ gulp.task('sprite:svg', function() {
         .pipe(svgStore({ inlineSvg: false })) // DissAllow incert svg in html. Getting a svg-sprite file
         .pipe(through2.obj(function(file, encoding, cb) {
             // const $ = file.cheerio;
+
             const $ = cheerio.load(file.contents.toString(), {xmlMode: true});
+
             const data = $('svg > symbol').map(function() { // Take every symbol in sprite file and
                 // get the attributes from it. Sending it to data obj
                 const $this  = $(this);
+                // console.log($this.next().attr('viewBox'));
+                // console.log($this.attr('viewBox'));
                 const size   = $this.attr('viewBox').split(' ').splice(2); // Get the size of symbol viewBox .split(' ').splice(2);
                 const name   = $this.attr('id'); // Get symbol id
                 const ratio  = size[0] / size[1]; // symbol width / symbol height

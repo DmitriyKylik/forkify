@@ -5,37 +5,37 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/app.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/co/4.1.0/index.js"></script>
-    <style>
-        .box {
-            width: 400px;
-            padding: 60px;
-            text-align: center;
-            font-size: 30px;
-            margin-top: 50px;
-        }
-
-        .green { background-color: green; }
-
-        .blue { background-color: dodgerblue; }
-
-        .orange { background-color: orangered; }
-
-    </style>
 </head>
 <body>
     <!-- BEGIN wrapper -->
-     <div class="wrapper">
-        <h1>Section 7: Let's Get Ready !!! for the Future: ES6 / ES2015</h1>
-
-        <div class="box green">I'm !</div>
-        <div class="box blue">I'm blue!</div>
-        <div class="box orange">I'm orange!</div>
+    <div class="wrapper grad-orange">
+        <div class="forkify">
+            <div class="forkify_header bg-gray">
+                <img src="img/logo.png" alt="logo" class="forkify_header_logo"/>
+                <form action="" class="forkify_search">
+                    <div class="forkify_search_input_wrap"><input type="text" class="forkify_search_input" placeholder="Search over 1 000 000 recipes. . ."/></div>
+                    <button class="btn btn_sm btn-inline btn-round grad-orange" type="submit">
+                        <svg class="icon icon-search">
+                            <use xlink:href="img/sprite.svg#icon-search"/>
+                        </svg>
+                        <span class="btn_textual">search</span>
+                    </button>
+                </form>
+                <div class="forkify_header_likes">
+                    <svg class="icon icon-heart">
+                        <use xlink:href="img/sprite.svg#icon-heart"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="forkify_recipes"></div>
+            <div class="forkify_gallery bg-gray"></div>
+            <div class="forkify_recipeFav"></div>
+        </div>
     </div>
     <!-- END wrapper -->
     <script  src="js/lib/lib.min.js"></script>
-    <!-- <script  src="@babel/polyfill/dist/polyfill.js"></script> -->
     <script  src="js/app.js"></script>
 </body>
 </html>
