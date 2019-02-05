@@ -7,16 +7,33 @@
 
 .forkify {
     display: flex;
+    flex-flow: wrap;
     width: 1200px;
     height: calc(100vh - 100px);
     margin: 28px auto;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 2rem 3rem 0.5rem rgba(125, 125, 125, 0.5);
     &_header {
         display: flex;
+        height: 10%;
+        min-height: 130px;
         flex-basis: 100%;
         justify-content: space-around;
         align-items: center;
         &_logo {
             width: 150px;
+        }
+        &_likes {
+            cursor: pointer;
+            & .icon {
+                fill: $dorange;
+                font-size: 38px;
+                transition: all 0.5s ease;
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
         }
     }
     &_search {
@@ -34,11 +51,23 @@
             width: 100%;
             font-size: 16px;
             font-family: inherit;
+
             &::placeholder {
                 opacity: 0.3;
                 font-weight: 700;
                 font-style: italic;
             }
         }
+    }
+    &_aside {
+        flex-basis: 25%;
+        height: 90%;
+        max-height: 90%;
+        background: #fff;
+    }
+    &_main {
+        height: 90%;
+        max-height: 90%;
+        flex-basis: 50%;
     }
 }
