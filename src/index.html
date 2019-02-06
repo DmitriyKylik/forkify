@@ -11,17 +11,18 @@
 <body>
     <!-- BEGIN wrapper -->
     <div class="wrapper grad-orange">
+        <!-- BEGIN forkify -->
         <div class="forkify">
             <!-- BEGIN forkify_header -->
             <div class="forkify_header bg-gray">
                 <img src="img/logo.png" alt="logo" class="forkify_header_logo"/>
-                <form action="" class="forkify_search">
-                    <div class="forkify_search_input_wrap"><input type="text" class="forkify_search_input" placeholder="Search over 1 000 000 recipes. . ."/></div>
-                    <button class="btn btn_sm btn-inline btn-round grad-orange" type="submit">
+                <form action="" class="search">
+                    <div class="search_input_wrap"><input type="text" class="search_input" placeholder="Search over 1 000 000 recipes..."/></div>
+                    <button class="btn btn_search btn-round grad-orange">
                         <svg class="icon icon-search">
                             <use xlink:href="img/sprite.svg#icon-search"/>
                         </svg>
-                        <span class="btn_textual">search</span>
+                        <span class="btn_text">search</span>
                     </button>
                 </form>
                 <div class="forkify_header_likes">
@@ -31,149 +32,160 @@
                 </div>
             </div>
             <!-- END forkify_header -->
-            <!-- BEGIN forkify_results -->
-            <div class="forkify_aside results">
-                <ul class="results_list">
-                    <!-- <li>
-                        <a class="results__link results__link--active" href="#23456">
-                            <figure class="results__fig">
-                                <img src="img/test-1.jpg" alt="Test">
-                            </figure>
-                            <div class="results__data">
-                                <h4 class="results__name">Pasta with Tomato ...</h4>
-                                <p class="results__author">The Pioneer Woman</p>
+            <!-- BEGIN forkify_main -->
+             <div class="forkify_main">
+                <!-- BEGIN forkify_results -->
+                <div class="forkify_aside results">
+                    <ul class="results_list">
+                        <li class="results_list_item">
+                            <a class="results_link results_link-active" href="#23456">
+                                <figure class="results_fig">
+                                    <img src="img/test-1.jpg" alt="Test">
+                                </figure>
+                                <div class="results_data">
+                                    <h4 class="results_name">Pasta with Tomato ...</h4>
+                                    <p class="results_author">The Pioneer Woman</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="results_list_item">
+                            <a class="results_link results_link-active" href="#23456">
+                                <figure class="results_fig">
+                                    <img src="img/test-1.jpg" alt="Test">
+                                </figure>
+                                <div class="results_data">
+                                    <h4 class="results_name">Pasta with Tomato ...</h4>
+                                    <p class="results_author">The Pioneer Woman</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="results_pages">
+                        <button class="btn btn_pagination btn_xs btn_inline bg-gray btn-round results_btn-prev">
+                            <svg class="icon icon-search">
+                                <use xlink:href="img/sprite.svg#icon-triangle-left"></use>
+                            </svg>
+                            <span class="btn_text">Page 1</span>
+                        </button>
+                        <button class="btn btn_pagination btn_xs btn_inline bg-gray btn-round results_btn-next">
+                            <span class="btn_text">Page 3</span>
+                            <svg class="icon icon-search">
+                                <use href="img/sprite.svg#icon-triangle-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- END forkify_results -->
+                <!-- BEGIN recipe -->
+                <div class="recipe bg-gray">
+                    <figure class="recipe_fig">
+                        <img src="img/test-1.jpg" alt="Test">
+                        <h2 class="recipe_title skewed grad-orange">awesome pizza from italian mafia</h1>
+                    </figure>
+                    <div class="recipe_info recipe_details">
+                        <div class="recipe_time">
+                            <svg class="icon icon-stopwatch">
+                                <use xlink:href="img/sprite.svg#icon-stopwatch"/>
+                            </svg>
+                            <span class="recipe_time_minutes">50</span>
+                            <span class="recipe_time_text">minutes</span>
+                        </div>
+                        <div class="recipe_info recipe_serving">
+                            <svg class="icon icon-man">
+                                <use xlink:href="img/sprite.svg#icon-man"/>
+                            </svg>
+                            <span class="recipe_serving_count">4</span>
+                            <span class="recipe_serving_text">serving</span>
+                            <div class="recipe_serving_button">
+                                <button class="btn btn_switch btn_inline">
+                                    <svg class="icon icon-circle-minus">
+                                        <use xlink:href="img/sprite.svg#icon-circle-minus"/>
+                                    </svg>
+                                </button>
+                                <button class="btn btn_switch btn_inline">
+                                    <svg class="icon icon-circle-plus">
+                                        <use xlink:href="img/sprite.svg#icon-circle-plus"/>
+                                    </svg>
+                                </button>
                             </div>
-                        </a>
-                    </li> -->
-                </ul>
-                <div class="results_pages">
-                    <!--
-                    <button class="btn-inline results__btn--prev">
-                        <svg class="search__icon">
-                            <use href="img/icons.svg#icon-triangle-left"></use>
+                        </div>
+                        <button class="btn grad-orange">
+                            <svg class="icon icon-heart-outlined">
+                                <use xlink:href="img/sprite.svg#icon-heart-outlined"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- <div class="recipe_details">
+                        <div class="recipe_info">
+                            <svg class="icon icon-info">
+                                <use href="img/icons.svg#icon-stopwatch"></use>
+                            </svg>
+                            <span class="recipe_info-data recipe_info-data-minutes">45</span>
+                            <span class="recipe_info-text"> minutes</span>
+                        </div>
+                        <div class="recipe_info">
+                            <svg class="recipe_info-icon">
+                                <use href="img/icons.svg#icon-man"></use>
+                            </svg>
+                            <span class="recipe_info-data recipe_info-data-people">4</span>
+                            <span class="recipe_info-text"> servings</span>
+                            <div class="recipe_info-buttons">
+                                <button class="btn-tiny">
+                                    <svg>
+                                        <use href="img/icons.svg#icon-circle-with-minus"></use>
+                                    </svg>
+                                </button>
+                                <button class="btn-tiny">
+                                    <svg>
+                                        <use href="img/icons.svg#icon-circle-with-plus"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="recipe_love">
+                            <svg class="header_likes">
+                                <use href="img/icons.svg#icon-heart-outlined"></use>
+                            </svg>
+                        </button>
+                    </div> -->
+                <!-- BEGIN recipe_ingredients -->
+                <div class="forkify_aside recipe_ingredients">
+                    <ul class="recipe_ingredients_list">
+                        <li class="recipe_ingredients_item">
+                            <div class="recipe_ingredient">
+                                <div class="recipe_count">1/2</div>
+                                <span class="recipe_ingredient_unit">cup</span>
+                                <span class="recipe_ingredient_name">cup ricotta cheese</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="btn btn-md btn_shopping grad-orange">
+                        <svg class="icon icon-shopping-cart">
+                            <use xlink:href="img/sprite.svg#icon-shopping-cart"/>
                         </svg>
-                        <span>Page 1</span>
+                        <span>add to shopping list</span>
                     </button>
-                    <button class="btn-inline results__btn--next">
-                        <span>Page 3</span>
-                        <svg class="search__icon">
-                            <use href="img/icons.svg#icon-triangle-right"></use>
+                </div>
+                <!-- END recipe_ingredients -->
+                <div class="recipe_directions">
+                    <h3 class="recipe_directions_title">how to cook it</h3>
+                    <p class="recipe_directions_text">This recipe was carefully designed and tested
+                        by <span class="recipe_author">Pioneer Woman</span> Celkwdjfhadlh.
+                    </p>
+                    <button class="button_directions">
+                        <span class="button_directions_text">directions</span>
+                        <svg class="icon icon-triangle-right">
+                            <use xlink:href="img/sprite.svg#icon-triangle-right"/>
                         </svg>
                     </button>
-                    -->
                 </div>
             </div>
-            <!-- END forkify_results -->
-            <!-- BEGIN recipe -->
-            <div class="forkify_main recipe bg-gray">
-                <!-- <div class="recipe_details">
-                    <div class="recipe_info">
-                        <svg class="icon icon-info">
-                            <use href="img/icons.svg#icon-stopwatch"></use>
-                        </svg>
-                        <span class="recipe_info-data recipe_info-data-minutes">45</span>
-                        <span class="recipe_info-text"> minutes</span>
-                    </div>
-                    <div class="recipe_info">
-                        <svg class="recipe_info-icon">
-                            <use href="img/icons.svg#icon-man"></use>
-                        </svg>
-                        <span class="recipe_info-data recipe_info-data-people">4</span>
-                        <span class="recipe_info-text"> servings</span>
-                        <div class="recipe_info-buttons">
-                            <button class="btn-tiny">
-                                <svg>
-                                    <use href="img/icons.svg#icon-circle-with-minus"></use>
-                                </svg>
-                            </button>
-                            <button class="btn-tiny">
-                                <svg>
-                                    <use href="img/icons.svg#icon-circle-with-plus"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    <button class="recipe_love">
-                        <svg class="header_likes">
-                            <use href="img/icons.svg#icon-heart-outlined"></use>
-                        </svg>
-                    </button>
-                </div> -->
+                <!-- END recipe -->
+
             </div>
-            <!-- END recipe -->
-            <!-- BEGIN recipe_ingredients -->
-            <div class="forkify_aside recipe_ingredients">
-                <!-- <ul class="recipe_ingredient_list">
-                    <li class="recipe_ingredients_item">
-                        <svg class="icon icon_check">
-                            <use href="img/sprite.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_ingredient_count">1000</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit">g</span>
-                            pasta
-                        </div>
-                    </li>
-                    <li class="recipe_item">
-                        <svg class="recipe_icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_count">1/2</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit">cup</span>
-                            ricotta cheese
-                        </div>
-                    </li>
-                    <li class="recipe_item">
-                        <svg class="icon recipe_icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_count">1</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit"></span>
-                            can of tomatoes, whole or crushed
-                        </div>
-                    </li>
-                    <li class="recipe_item">
-                        <svg class="icon recipe_icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_count">1</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit"></span>
-                            can tuna packed in olive oil
-                        </div>
-                    </li>
-                    <li class="recipe_item">
-                        <svg class="recipe_icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_count">1/2</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit">cup</span>
-                            grated parmesan cheese
-                        </div>
-                    </li>
-                    <li class="recipe_item">
-                        <svg class="recipe_icon">
-                            <use href="img/icons.svg#icon-check"></use>
-                        </svg>
-                        <div class="recipe_count">1/4</div>
-                        <div class="recipe_ingredient">
-                            <span class="recipe_unit">cup</span>
-                            fresh basil, chopped or torn
-                        </div>
-                    </li>
-                </ul>
-                <button class="btn-small recipe_btn">
-                    <svg class="search__icon">
-                        <use href="img/icons.svg#icon-shopping-cart"></use>
-                    </svg>
-                    <span>Add to shopping list</span>
-                </button> -->
-            </div>
-            <!-- END recipe_ingredients -->
+            <!-- END forkify_main -->
         </div>
+            <!-- END forkify -->
     </div>
     <!-- END wrapper -->
     <script  src="js/lib/lib.min.js"></script>
