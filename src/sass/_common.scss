@@ -1,41 +1,58 @@
 $orange:#fbda89;
 $dorange: #f48a82;
-$wrapperGradient: $orange, #f48a82;
+$wrapperGradient: $orange, $dorange;
 $gray: #f9f5f3;
+$lgray: #f2efee;
+$lbrown: #968b87;
 
 .btn {
-    justify-content: center;
+    display: flex;
     align-items: center;
-    padding: 10px;
-    text-align: center;
+    justify-content: center;
     text-transform: uppercase;
-    font-size: 14px;
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
+    text-align: center;
     transition: all 0.5s ease;
-    & .icon {
-        fill: #fff;
-        font-size: 22px;
-        margin-right: 10px;
+    &_inline {
+        display: inline-flex;
     }
-    &:hover {
-        transform: scale(1.1);
+    &_text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
-}
-
-.btn-inline {
-    display: inline-flex;
-}
-
-.btn_sm {
-    width: 150px;
-}
-
-.btn-round {
-    border-radius: 30px;
+    &_sm {
+        max-width: 150px;
+    }
+    &_xs {
+        max-width: 100px;
+    }
+    &_search {
+        padding: 10px 15px;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 30px;
+        & .icon {
+            margin-right: 10px;
+            fill: #fff;
+            font-size: 22px;
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    &_pagination {
+        padding: 5px 10px;
+        color: $dorange;
+        font-size: 12px;
+        border-radius: 15px;
+        & .icon {
+            fill: $dorange;
+            font-size: 18px;
+        }
+        &:hover {
+            background: $lgray;
+        }
+    }
 }
 
 .grad-orange {
@@ -45,3 +62,39 @@ $gray: #f9f5f3;
 .bg-gray {
     background: $gray;
 }
+
+
+// .btn, .btn-small, .btn-small:link, .btn-small:visited {
+//     background-image: linear-gradient(to right bottom, #FBDB89, #F48982);
+//     border-radius: 10rem;
+//     border: none;
+//     text-transform: uppercase;
+//     color: #fff;
+//     cursor: pointer;
+//     display: flex;
+//     align-items: center;
+//     transition: all .2s; }
+//     .btn:hover, .btn-small:hover {
+//       transform: scale(1.05); }
+//     .btn:focus, .btn-small:focus {
+//       outline: none; }
+//     .btn > *:first-child, .btn-small > *:first-child {
+//       margin-right: 1rem; }
+
+//   .btn {
+//     padding: 1.3rem 3rem;
+//     font-size: 1.4rem; }
+//     .btn svg {
+//       height: 2.25rem;
+//       width: 2.25rem;
+//       fill: currentColor; }
+
+//   .btn-small, .btn-small:link, .btn-small:visited {
+//     font-size: 1.3rem;
+//     padding: 1rem 1.75rem;
+//     text-decoration: none; }
+//     .btn-small svg, .btn-small:link svg, .btn-small:visited svg {
+//       height: 1.5rem;
+//       width: 1.5rem;
+//       fill: currentColor; }
+
