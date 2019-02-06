@@ -23,8 +23,9 @@ html {
   box-sizing: border-box;
 }
 
-img, fieldset, a img {
+img, fieldset, a, img {
   border: none;
+  text-decoration: none;
 }
 
 input[type="text"],
