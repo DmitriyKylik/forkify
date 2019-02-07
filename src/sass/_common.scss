@@ -1,14 +1,16 @@
 $orange:#fbda89;
 $dorange: #f48a82;
-$wrapperGradient: $orange, $dorange;
+$grad-orange: $orange, $dorange;
 $gray: #f9f5f3;
 $lgray: #f2efee;
+$dgray: #eeecea;
 $lbrown: #968b87;
 
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 0 0 auto;
     text-transform: uppercase;
     text-align: center;
     transition: all 0.5s ease;
@@ -26,6 +28,13 @@ $lbrown: #968b87;
     &_xs {
         max-width: 100px;
     }
+    &_heart {
+        background: none;
+        & .icon {
+            fill: $dorange;
+            font-size: 38px;
+        }
+    }
     &_search {
         padding: 10px 15px;
         font-size: 14px;
@@ -35,9 +44,6 @@ $lbrown: #968b87;
             margin-right: 10px;
             fill: #fff;
             font-size: 22px;
-        }
-        &:hover {
-            transform: scale(1.1);
         }
     }
     &_pagination {
@@ -53,15 +59,82 @@ $lbrown: #968b87;
             background: $lgray;
         }
     }
+    &_switch {
+        background: none;
+        & .icon {
+            fill: $dorange;
+            transition: all 0.3s;
+            font-size: 16px;
+            &:hover {
+                fill: $orange;
+            }
+        }
+    }
+    &_heart_outlined {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.2s;
+        & .icon {
+            font-size: 25px;
+            fill: #fff;
+        }
+    }
+    &_shopping {
+        margin: 0 auto;
+        padding: 10px 15px;
+        color: #fff;
+        border-radius: 20px;
+        & .icon {
+            font-size: 16px;
+            fill: #fff;
+            margin-right: 10px;
+        }
+    }
+    &_directions {
+        margin: auto;
+        padding: 10px 15px;
+        border-radius: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        & .icon {
+            font-size: 16px;
+            fill: #fff;
+            margin-left: 10px;
+        }
+    }
+    &_cross {
+        background: none;
+        opacity: 0;
+        transition: all 0.3s;
+        & .icon {
+            font-size: 18px;
+            fill: $dorange;
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
 
 .grad-orange {
-    background-image: linear-gradient(to right bottom, $wrapperGradient);
+    background-image: linear-gradient(to right bottom, $grad-orange);
 }
 
 .bg-gray {
     background: $gray;
 }
+
+.scaled {
+    transition: all 0.2s;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// .skewed {
+//     transform: skew(-6deg);
+// }
 
 
 // .btn, .btn-small, .btn-small:link, .btn-small:visited {
