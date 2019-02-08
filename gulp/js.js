@@ -10,6 +10,7 @@ const named = require('vinyl-named');
 const through = require('through2');
 const rename = require('gulp-rename');
 const config = require('./config');
+const notify = require('gulp-notify');
 
 gulp.task('js', function() {
     return gulp.src(`${config.src.js}/app.js`)
@@ -34,14 +35,24 @@ gulp.task('js', function() {
                 ]
             }
         }))
+        .on('error', function() {
+            this.emit('end', new Error('Something happend: Error message!'));
+        })
+        .on('error', config.errorHandler.onError(function() {
+            return 'Error: WEBPACK';
+        }))
         .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(through.obj(function (file, enc, cb) {
+        .pipe(through.obj(function(file, enc, cb) {
             // Dont pipe through any source map files as it will be handled
             // by gulp-sourcemaps
             const isSourceMap = /\.map$/.test(file.path);
             if (!isSourceMap) this.push(file);
             cb();
         }))
+        // .on('error', function handleError(error) {
+        //     console.error(error.message, '\x07');
+        //     this.emit('end'); // Recover from errors
+        // })
         .pipe(uglify())
         .on('error', config.errorHandler.onError({
             message: [
