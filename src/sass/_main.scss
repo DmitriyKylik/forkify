@@ -9,8 +9,7 @@
     display: flex;
     flex-flow: wrap;
     max-width: 1200px;
-    height: calc(100vh - 100px);
-    min-height: 1000px;
+    min-height: calc(100vh - 100px);
     margin: 28px auto;
     overflow: hidden;
     border-radius: 5px;
@@ -35,7 +34,6 @@
     &_aside {
         flex-basis: 25%;
         background: #fff;
-        height: 100%;
     }
 }
 
@@ -74,6 +72,7 @@
         }
     }
     &_fig {
+        flex: 0 0 auto;
         width: 50px;
         height: 50px;
         margin-right: 20px;
@@ -85,11 +84,6 @@
             height: 100%;
             object-fit: cover;
         }
-    }
-    &_data {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
     }
     &_name {
         color: $dorange;
