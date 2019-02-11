@@ -138,6 +138,22 @@ $lbrown: #968b87;
     }
 }
 
+.loader {
+    text-align: center;
+    & .icon {
+        width: 20%;
+        height: auto;
+        fill: $orange;
+        animation: spin360 linear 1s infinite;
+    }
+}
+
+@keyframes spin360 {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 // .skewed {
 //     transform: skew(-6deg);
 // }
