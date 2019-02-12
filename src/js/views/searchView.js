@@ -1,4 +1,4 @@
-import { elements } from './base';
+import { elements, renderLoader } from './base';
 
 export const getInput = () => elements.searchInput.value;
 export const clearInput = () => {elements.searchInput.value = ''};
@@ -35,7 +35,7 @@ const renderRecipe = recipe => {
     elements.searchResList.insertAdjacentHTML('beforeend', markup);
 };
 // func that recieves recipes array and prints them
-export const renderResults = recipes => {
+export const renderResults = (recipes) => {
     console.log(recipes);
     recipes.forEach(renderRecipe);
 };
