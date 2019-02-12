@@ -13,7 +13,7 @@ const state = {};
 
 const controlSearch = async() => {
     // 1) get query from view
-    const query = searchView.getInput(); // TODO
+    const query = searchView.getInput();
 
     // 2) add new Search object to state;
     state.search = new Search(query);
@@ -32,8 +32,16 @@ const controlSearch = async() => {
     searchView.renderResults(state.search.result);
 };
 
-// Способ задавания ивентов. ( Не через document.querySelector);
 elements.searchForm.addEventListener('submit', function(event) {
     event.preventDefault();
     controlSearch();
+});
+
+elements.resultsPages.addEventListener('click', function(event) {
+    const button =  event.target.closest('.btn');
+    if(button) {
+        const nextPage = +(button.dataset.page);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, nextPage);
+    }
 });

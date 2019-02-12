@@ -3,12 +3,20 @@ export const elements = {
     searchInput: document.querySelector('.search_input'),
     searchResList: document.querySelector('.results_list'),
     searchResults: document.querySelector('.results'),
-    recipe: document.querySelector('.recipe')
-    // recipe: document.querySelectorAll('.loader')
+    resultsPages: document.querySelector('.results_pages')
 };
 
 export const elementStrings = {
-    loader: 'loader'
+    loader: 'loader',
+    nextPagbtn: {
+        btnClass: 'results_btn-next',
+        svgIcon: 'icon-triangle-right'
+    },
+    prevPagbtn: {
+        btnClass: 'results_btn-prev',
+        svgIcon: 'icon-triangle-left'
+    }
+
 };
 
 export const renderLoader = parent => {
@@ -28,11 +36,4 @@ export const clearLoader = () => {
         loader.parentElement.removeChild(loader);
     }
 };
-
-// export const hideLoader = parent => {}
-
-// Render Loader
-// 1) Create loader
-// 2) Add styles for spinner (loader class)
-// 2) on choose the recipe apply spinner for parent
 
