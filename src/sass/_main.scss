@@ -104,6 +104,7 @@
     }
     &_btn-prev {
         float: left;
+        flex-direction: row-reverse;
     }
     &_btn-next {
         float: right;
