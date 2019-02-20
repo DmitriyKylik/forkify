@@ -73,6 +73,9 @@
             background: $gray;
             transform: translateY(-2px);
         }
+        &-active {
+            background: $gray;
+        }
     }
     &_fig {
         flex: 0 0 auto;

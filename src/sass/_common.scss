@@ -41,6 +41,7 @@ $lbrown: #968b87;
         color: #fff;
         border-radius: 30px;
         & .icon {
+            flex: 0 0 auto;
             margin-right: 10px;
             fill: #fff;
             font-size: 22px;
@@ -59,7 +60,7 @@ $lbrown: #968b87;
             background: $lgray;
         }
     }
-    &_switch {
+    &_adjust {
         background: none;
         & .icon {
             fill: $dorange;
