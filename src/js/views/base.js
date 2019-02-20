@@ -3,11 +3,17 @@ export const elements = {
     searchInput: document.querySelector('.search_input'),
     searchResList: document.querySelector('.results_list'),
     searchResults: document.querySelector('.results'),
-    resultsPages: document.querySelector('.results_pages')
+    resultsPages: document.querySelector('.results_pages'),
+    recipeElem: document.querySelector('.recipe'),
+    recipeCount: document.querySelector('.recipe_count'),
+    shoppingList: document.querySelector('.shopping_list')
+    // btnIngredReduce: document.querySelector('.btn_ingredReduce')
 };
 
 export const elementStrings = {
     loader: 'loader',
+    activeRecipe: 'results_link-active',
+    recipeLink: 'results_link',
     nextPagbtn: {
         btnClass: 'results_btn-next',
         svgIcon: 'icon-triangle-right'
@@ -15,8 +21,9 @@ export const elementStrings = {
     prevPagbtn: {
         btnClass: 'results_btn-prev',
         svgIcon: 'icon-triangle-left'
-    }
-
+    },
+    recipeCount: 'recipe_count',
+    recipeServings: 'recipe_serving_count'
 };
 
 export const renderLoader = parent => {
