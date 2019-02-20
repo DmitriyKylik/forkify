@@ -28,6 +28,7 @@ gulp.task('server', function() {
         logFileChanges: true,
         open: 'local', // 'false', 'external', 'ui', 'tunnel' указываем, что наш url внешний в случае external
         notify: false,
+        cors: true,
         ghostMode: false, // synchronized events in browsers
         online: true
         // tunnel: true

@@ -10,7 +10,6 @@ const named = require('vinyl-named');
 const through = require('through2');
 const rename = require('gulp-rename');
 const config = require('./config');
-const notify = require('gulp-notify');
 
 gulp.task('js', function() {
     return gulp.src(`${config.src.js}/app.js`)
@@ -53,16 +52,16 @@ gulp.task('js', function() {
         //     console.error(error.message, '\x07');
         //     this.emit('end'); // Recover from errors
         // })
-        .pipe(uglify())
-        .on('error', config.errorHandler.onError({
-            message: [
-                'Error: <%= error.message %>',
-                '\n<%= error.cause %>',
-                '\nLine: <%= error.cause.line %>',
-                '\nPosition: <%= error.cause.pos %>',
-                '\n<%= error.fileName %>'
-            ]
-        }))
+        // .pipe(uglify())
+        // .on('error', config.errorHandler.onError({
+        //     message: [
+        //         'Error: <%= error.message %>',
+        //         '\n<%= error.cause %>',
+        //         '\nLine: <%= error.cause.line %>',
+        //         '\nPosition: <%= error.cause.pos %>',
+        //         '\n<%= error.fileName %>'
+        //     ]
+        // }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(`${config.dest.js}/`))
         .pipe(browserSync.stream({ once: true }));
