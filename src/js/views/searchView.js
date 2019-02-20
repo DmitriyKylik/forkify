@@ -25,7 +25,7 @@ const limitRecipeTitle = (title, limit = 17) => {
 const renderRecipe = recipe => {
     const markup = `
     <li class="results_list_item">
-        <a class="results_link" href="#${recipe.recipe_id}">
+        <a class="results_link" href="#${recipe.recipe_id}" data-id="${recipe.recipe_id}">
             <figure class="results_fig">
                 <img src=${recipe.image_url} alt="${recipe.title}">
             </figure>
@@ -38,8 +38,6 @@ const renderRecipe = recipe => {
     `;
     elements.searchResList.insertAdjacentHTML('beforeend', markup);
 };
-
-// Pagination
 
 const createPaginBtn = (page, type) => {
     return `
@@ -74,7 +72,7 @@ const renderButtons = (page, recipesAmount, resPerPage) => {
     elements.resultsPages.insertAdjacentHTML('beforeend', button);
 };
 
-export const renderResults = (recipes, page = 2, resPerPage = 10) => {
+export const renderResults = (recipes, page = 1, resPerPage = 10) => {
     const start = (page - 1) * resPerPage;
     const end = page * resPerPage;
     recipes.slice(start, end).forEach(renderRecipe);
