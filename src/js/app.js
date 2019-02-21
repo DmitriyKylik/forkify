@@ -1,11 +1,10 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
-import List from './models/List';
+import Shop from './models/Shop';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
-import * as listView from './views/listView';
-import {elements, renderLoader, clearLoader} from './views/base';
-
+import * as shopView from './views/shopView';
+import {elements, elementStrings, renderLoader, clearLoader} from './views/base';
 
 /* Global state of the app
 * - Search object !
@@ -75,6 +74,7 @@ const controlRecipe = async() => {
             state.recipe.parseIngredients();
             recipeView.renderRecipe(state.recipe);
             clearLoader();
+            console.log(state.recipe);
         }catch(error) {
             console.log(error);
         }
@@ -82,6 +82,34 @@ const controlRecipe = async() => {
 };
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+
+elements.shoppingList.addEventListener('click', (event) => {
+    const id = event.target.closest(`.${elementStrings.shoppingItem}`).dataset.shopid;
+    if(event.target.matches('.btn_cross, .btn_cross *')) {
+        state.shopList.removeItem(id);
+        shopView.removeItem(id);
+    } else if(event.target.matches(`.${elementStrings.shopItemInput}`)) {
+        const value = parseFloat(event.target.value, 10);
+        state.shopList.updateCount(id, value);
+    }
+});
+
+/*
+     List controller
+*/
+
+const controlShopList = (recipe) => {
+
+    if(!state.shopList) state.shopList = new Shop();
+    // Add ingredient Items for shoList object
+    shopView.clearShopList();
+    recipe.ingredients.forEach(elem => {
+        const item = state.shopList.addItem(elem.count, elem.unit, elem.ingredient);
+        shopView.renderShopItems(item);
+    });
+    // Render items
+
+};
 
 elements.recipeElem.addEventListener('click', (event) => {
     const {target} = event;
@@ -92,10 +120,8 @@ elements.recipeElem.addEventListener('click', (event) => {
             recipeView.updateServingsElement(state.recipe);
             recipeView.updateIngredientsElement(state.recipe);
         }
+    } else if(target.matches('.btn_shopping, .btn_shopping *')) {
+        controlShopList(state.recipe);
     }
 });
-/*
-     List controller
-*/
-
 

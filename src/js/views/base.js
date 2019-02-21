@@ -23,7 +23,9 @@ export const elementStrings = {
         svgIcon: 'icon-triangle-left'
     },
     recipeCount: 'recipe_count',
-    recipeServings: 'recipe_serving_count'
+    recipeServings: 'recipe_serving_count',
+    shoppingItem: 'shopping_item',
+    shopItemInput: 'ingredient_data_amount'
 };
 
 export const renderLoader = parent => {

@@ -1,26 +1,31 @@
 import {elements, elementStrings} from './base';
 
-// render List Items
+export const clearShopList = () => {
+    elements.shoppingList.innerHTML = '';
+};
 
-const createShopItem = (ingredient) =>
-    `<li class="shopping_item">
-        <div class="ingredient_data">
-            <input type="number" class="ingredient_data_amount" min="0" value="${ingredient.count}" step="0.25" placeholder="0">
-            <span class="ingredient_data_unit">${ingredient.unit}</span>
-        </div>
-        <p class="shopping_descr">
-            ${ingredient.name}
-        </p>
-        <button class="btn btn_cross btn_inline">
-            <svg class="icon icon-circle-cross">
-                <use xlink:href="img/sprite.svg#icon-circle-cross"/>
-            </svg>
-        </button>
-    </li>`;
-
-export const renderShopItems = (recipe) => {
+export const renderShopItems = (ingredient) => {
     const markup = `
-        ${recipe.ingredients.map(elem => createShopItem(elem))}
-    `;
-    elements.shoppingList.insertAdjacentHTML('afterbegin', markup);
+        <li class="${elementStrings.shoppingItem}" data-shopid="${ingredient.id}">
+            <div class="ingredient_data">
+                <input type="number" class="${elementStrings.shopItemInput}" min="0" value="${ingredient.count}" step="${ingredient.count}" placeholder="0">
+                ${ingredient.unit ? `<span class="ingredient_data_unit">${ingredient.unit}</span>` : ''}
+            </div>
+            <p class="shopping_descr">
+                ${ingredient.ingredient}
+            </p>
+            <button class="btn btn_cross btn_inline">
+                <svg class="icon icon-circle-cross">
+                    <use xlink:href="img/sprite.svg#icon-circle-cross"/>
+                </svg>
+            </button>
+        </li>`;
+    elements.shoppingList.insertAdjacentHTML('beforeend', markup);
+};
+
+export const removeItem = (id) => {
+    const item = document.querySelector(`[data-shopid=${id}]`);
+    if(item) {
+        item.parentElement.removeChild(item);
+    }
 };
