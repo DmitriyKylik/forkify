@@ -242,8 +242,9 @@
     }
     &_item {
         display: flex;
-        padding: 10px 0;
         align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
         color: #000;
         font-size: 14px;
         border-bottom: 1px solid $lgray;
@@ -268,3 +269,5 @@
         }
     }
 }
+
+
