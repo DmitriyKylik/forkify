@@ -8,7 +8,7 @@ export const clearResults = () => {
 };
 
 // Past with pomodoro and spinach
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if(title.length > limit) {
         title.split(' ').reduce((acc, curr) => {
@@ -24,14 +24,14 @@ const limitRecipeTitle = (title, limit = 17) => {
 
 const renderRecipe = recipe => {
     const markup = `
-    <li class="results_list_item">
-        <a class="results_link" href="#${recipe.recipe_id}" data-id="${recipe.recipe_id}">
-            <figure class="results_fig">
+    <li class="forkify_list_item">
+        <a class="forkify_link" href="#${recipe.recipe_id}" data-id="${recipe.recipe_id}">
+            <figure class="forkify_fig">
                 <img src=${recipe.image_url} alt="${recipe.title}">
             </figure>
-            <div class="results_data">
-                <h4 class="results_name" title="${recipe.title}">${limitRecipeTitle(recipe.title)}</h4>
-                <p class="results_author" title="${recipe.publisher}">${recipe.publisher}</p>
+            <div class="forkify_data">
+                <h4 class="forkify_name" title="${recipe.title}">${limitRecipeTitle(recipe.title)}</h4>
+                <p class="forkify_author" title="${recipe.publisher}">${recipe.publisher}</p>
             </div>
         </a>
     </li>

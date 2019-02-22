@@ -37,7 +37,7 @@ const createRecipeFigure = (recipe) => {
             </figure>
             `;
 };
-const createRecipeDetails = (recipe) => {
+const createRecipeDetails = (recipe, isLiked) => {
     return `<div class="recipe_details">
                 <div class="recipe_info recipe_time">
                     <svg class="icon icon-stopwatch">
@@ -65,9 +65,9 @@ const createRecipeDetails = (recipe) => {
                         </button>
                     </div>
                 </div>
-                <button class="btn btn_inline btn_heart_outlined grad-orange scaled">
-                    <svg class="icon icon-heart-outlined">
-                        <use xlink:href="img/sprite.svg#icon-heart-outlined"/>
+                <button class="btn btn_like btn_inline grad-orange scaled">
+                    <svg class="icon ${isLiked ? elementStrings.iconHeart : elementStrings.iconHeartOutline}">
+                        <use xlink:href="img/sprite.svg#${isLiked ? elementStrings.iconHeart : elementStrings.iconHeartOutline}"/>
                     </svg>
                 </button>
             </div>
@@ -111,12 +111,12 @@ const createRecipeItems = (recipe) => {
     return ingredient;
 };
 
-export const renderRecipe = (recipe) => {
+export const renderRecipe = (recipe, isLiked) => {
     const markup = `
         <!-- BEGIN recipe -->
         <div class="recipe bg-gray">
             ${createRecipeFigure(recipe)}
-            ${createRecipeDetails(recipe)}
+            ${createRecipeDetails(recipe, isLiked)}
             <!-- BEGIN recipe_ingredients -->
             <div class="recipe_ingredients">
                 <ul class="recipe_ingredients_list">

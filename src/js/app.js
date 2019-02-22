@@ -1,9 +1,11 @@
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import Shop from './models/Shop';
+import Like from './models/Like';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shopView from './views/shopView';
+import * as likeView from './views/likeView';
 import {elements, elementStrings, renderLoader, clearLoader} from './views/base';
 
 /* Global state of the app
@@ -14,7 +16,7 @@ import {elements, elementStrings, renderLoader, clearLoader} from './views/base'
 */
 
 const state = {};
-
+// state.like = new Like();
 const controlSearch = async() => {
     // 1) get query from view
     const query = searchView.getInput();
@@ -26,12 +28,8 @@ const controlSearch = async() => {
     searchView.clearInput();
     searchView.clearResults();
     renderLoader(elements.searchResults);
-    // renderLoader(elements.recipe);
 
-    // 4) get the results
     await state.search.getResults();
-    console.log(state.search);
-    // 5) Render results in UI
     clearLoader();
     searchView.renderResults(state.search.result);
 };
@@ -51,10 +49,36 @@ elements.resultsPages.addEventListener('click', function(event) {
 });
 
 /*
+     Like controller
+*/
+
+const controlLike  = () => {
+    if(!state.like) state.like = new Like();
+    const currentId = state.recipe.id;
+    if(!state.like.isLiked(currentId)) {
+        state.like.addLike(currentId, state.recipe.title, state.recipe.publisher, state.recipe.img);
+        // Add to localStorage
+
+        // Toggle like button
+        likeView.togglikeBtn(true);
+
+        likeView.renderLikedRecipe(currentId, searchView.limitRecipeTitle(state.recipe.title), state.recipe.publisher, state.recipe.img);
+    } else {
+        // Toggle like button
+        likeView.togglikeBtn(false);
+        // Remove recipe
+        // remove item also from localStorage and from ul list
+        state.like.removeLike(currentId);
+        likeView.removeLikedRecipe(currentId);
+    }
+    likeView.toggleLikeMenu(state.like.getNumLikes());
+};
+
+/*
     Recipe controller
 */
 
-const controlRecipe = async() => {
+const controlRecipe = async(event) => {
     const id = window.location.hash.replace('#', '');
 
     if(id) {
@@ -72,16 +96,40 @@ const controlRecipe = async() => {
             state.recipe.calcServings();
             state.recipe.calcTime();
             state.recipe.parseIngredients();
-            recipeView.renderRecipe(state.recipe);
+            if(event.type === 'load') {
+                // Restore liked recipes on page load
+                state.like = new Like();
+
+                // Restore likes
+                state.like.getperSistData();
+
+                // Toggle like menu
+                likeView.toggleLikeMenu(state.like.getNumLikes());
+
+                // Render existing likes if ther
+                if(state.like.getNumLikes() > 0) {
+                    state.like.likes.forEach(like => likeView.renderLikedRecipe(like.id, searchView.limitRecipeTitle(like.title), like.author, like.img));
+                }
+
+                recipeView.renderRecipe(state.recipe, state.like.isLiked(id));
+
+                // Toggle like button
+                likeView.togglikeBtn(state.like.isLiked(id));
+            } else if(!state.like) {
+                recipeView.renderRecipe(state.recipe, false);
+            } else {
+                likeView.togglikeBtn(state.like.isLiked(id));
+                recipeView.renderRecipe(state.recipe, state.like.isLiked(id));
+            }
+
             clearLoader();
-            console.log(state.recipe);
         }catch(error) {
             console.log(error);
         }
     }
 };
 
-['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
+['hashchange', 'load'].forEach(elem => window.addEventListener(elem, (event) => controlRecipe(event) ) );
 
 elements.shoppingList.addEventListener('click', (event) => {
     const id = event.target.closest(`.${elementStrings.shoppingItem}`).dataset.shopid;
@@ -101,14 +149,11 @@ elements.shoppingList.addEventListener('click', (event) => {
 const controlShopList = (recipe) => {
 
     if(!state.shopList) state.shopList = new Shop();
-    // Add ingredient Items for shoList object
     shopView.clearShopList();
     recipe.ingredients.forEach(elem => {
         const item = state.shopList.addItem(elem.count, elem.unit, elem.ingredient);
         shopView.renderShopItems(item);
     });
-    // Render items
-
 };
 
 elements.recipeElem.addEventListener('click', (event) => {
@@ -122,6 +167,8 @@ elements.recipeElem.addEventListener('click', (event) => {
         }
     } else if(target.matches('.btn_shopping, .btn_shopping *')) {
         controlShopList(state.recipe);
+    } else if(target.matches('.btn_like, .btn_like *')) {
+        controlLike();
     }
 });
 
