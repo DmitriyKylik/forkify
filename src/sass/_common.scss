@@ -6,6 +6,10 @@ $lgray: #f2efee;
 $dgray: #eeecea;
 $lbrown: #968b87;
 
+.hide {
+    visibility: hidden;
+}
+
 .btn {
     display: flex;
     align-items: center;
@@ -71,7 +75,7 @@ $lbrown: #968b87;
             }
         }
     }
-    &_heart_outlined {
+    &_like {
         width: 50px;
         height: 50px;
         border-radius: 50%;

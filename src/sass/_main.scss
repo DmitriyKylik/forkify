@@ -33,6 +33,39 @@
         flex-basis: 25%;
         background: #fff;
     }
+    &_link {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        transition: all 0.3s ease;
+        &:hover {
+            background: $gray;
+            transform: translateY(-2px);
+        }
+        &-active {
+            background: $gray;
+        }
+    }
+    &_fig {
+        flex: 0 0 auto;
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &_name {
+        color: $dorange;
+    }
+    &_author {
+        color: $lbrown;
+        font-size: 12px;
+    }
 }
 
 .search {
@@ -58,45 +91,31 @@
     }
 }
 
+.likes {
+    position: relative;
+    &_list {
+        width: 300px;
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        background: #fff;
+        transition: all 0.3s;
+        z-index: 10;
+    }
+    &:hover &_list {
+        display: block;
+    }
+    &_item {
+        flex-basis: 100%;
+    }
+}
+
 .results {
     display: flex;
     flex-flow: column nowrap;
     &_list {
         flex: 1;
-    }
-    &_link {
-        display: flex;
-        align-items: center;
-        padding: 15px 20px;
-        transition: all 0.3s ease;
-        &:hover {
-            background: $gray;
-            transform: translateY(-2px);
-        }
-        &-active {
-            background: $gray;
-        }
-    }
-    &_fig {
-        flex: 0 0 auto;
-        width: 50px;
-        height: 50px;
-        margin-right: 20px;
-        border-radius: 50%;
-        overflow: hidden;
-        & img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
-    &_name {
-        color: $dorange;
-    }
-    &_author {
-        color: $lbrown;
-        font-size: 12px;
     }
     &_pages {
         margin: 30px 0;
@@ -121,14 +140,12 @@
         height: 315px;
         transform: scale(1.05);
         & img {
-            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         &:before {
             content: "";
-            display: block;
             position: absolute;
             top: 0;
             left: 0;
@@ -157,7 +174,7 @@
     &_details {
         display: flex;
         padding: 80px 20px 10px;
-        & .btn_heart_outlined {
+        & .btn_like {
             margin-left: auto;
         }
     }
