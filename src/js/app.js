@@ -74,6 +74,22 @@ const controlLike  = () => {
     likeView.toggleLikeMenu(state.like.getNumLikes());
 };
 
+const loadSavedRecipes = () => {
+    // Restore liked recipes on page load
+    if(!state.like) state.like = new Like();
+
+    // Restore likes
+    state.like.getpersistData();
+
+    // Toggle like menu
+    likeView.toggleLikeMenu(state.like.getNumLikes());
+
+    // Render existing likes if ther
+    if(state.like.getNumLikes() > 0) {
+        state.like.likes.forEach(like => likeView.renderLikedRecipe(like.id, searchView.limitRecipeTitle(like.title), like.author, like.img));
+    }
+};
+
 /*
     Recipe controller
 */
@@ -97,20 +113,7 @@ const controlRecipe = async(event) => {
             state.recipe.calcTime();
             state.recipe.parseIngredients();
             if(event.type === 'load') {
-                // Restore liked recipes on page load
-                state.like = new Like();
-
-                // Restore likes
-                state.like.getperSistData();
-
-                // Toggle like menu
-                likeView.toggleLikeMenu(state.like.getNumLikes());
-
-                // Render existing likes if ther
-                if(state.like.getNumLikes() > 0) {
-                    state.like.likes.forEach(like => likeView.renderLikedRecipe(like.id, searchView.limitRecipeTitle(like.title), like.author, like.img));
-                }
-
+                loadSavedRecipes();
                 recipeView.renderRecipe(state.recipe, state.like.isLiked(id));
 
                 // Toggle like button
@@ -126,6 +129,9 @@ const controlRecipe = async(event) => {
         }catch(error) {
             console.log(error);
         }
+    } else {
+        loadSavedRecipes();
+        console.log(localStorage);
     }
 };
 

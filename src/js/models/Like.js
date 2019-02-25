@@ -34,10 +34,14 @@ export default class Like {
         localStorage.setItem('likes', JSON.stringify(this.likes));
     };
 
-    getperSistData() {
+    getpersistData() {
         const storage = JSON.parse(localStorage.getItem('likes'));
         if(storage) {
             this.likes = storage;
         }
     };
+
+    removeSavedRecipes() {
+        localStorage.removeItem('likes');
+    }
 };

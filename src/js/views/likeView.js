@@ -38,3 +38,7 @@ export const removeLikedRecipe = id => {
         item.parentElement.removeChild(item);
     }
 };
+
+// export const renderRemoveBtn = numLikes => {
+//     if(numLikes > 0) {}
+// };
