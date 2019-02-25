@@ -1,25 +1,10 @@
-import { elements, elementStrings} from './base';
+import { elements, elementStrings, limitRecipeTitle} from './base';
 
 export const getInput = () => elements.searchInput.value;
 export const clearInput = () => {elements.searchInput.value = ''};
 export const clearResults = () => {
     elements.searchResList.innerHTML = '';
     elements.resultsPages.innerHTML = '';
-};
-
-// Past with pomodoro and spinach
-export const limitRecipeTitle = (title, limit = 17) => {
-    const newTitle = [];
-    if(title.length > limit) {
-        title.split(' ').reduce((acc, curr) => {
-            if(acc + curr.length <= limit) {
-                newTitle.push(curr);
-            }
-            return acc + curr.length;
-        }, 0);
-        return `${newTitle.join(' ')} ...`;
-    }
-    return title;
 };
 
 const renderRecipe = recipe => {

@@ -6,10 +6,9 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shopView from './views/shopView';
 import * as likeView from './views/likeView';
-import {elements, elementStrings, renderLoader, clearLoader} from './views/base';
+import {elements, elementStrings, renderLoader, clearLoader, limitRecipeTitle} from './views/base';
 
 /* Global state of the app
-* - Search object !
 * - Current recipe object
 * - Shopping list object
 * - Liked recipes
@@ -56,19 +55,22 @@ const controlLike  = () => {
     if(!state.like) state.like = new Like();
     const currentId = state.recipe.id;
     if(!state.like.isLiked(currentId)) {
-        state.like.addLike(currentId, state.recipe.title, state.recipe.publisher, state.recipe.img);
-        // Add to localStorage
+        const newItem = state.like.addLike(state.recipe);
 
         // Toggle like button
         likeView.togglikeBtn(true);
 
-        likeView.renderLikedRecipe(currentId, searchView.limitRecipeTitle(state.recipe.title), state.recipe.publisher, state.recipe.img);
+        // Toggle remove all recipes button
+        likeView.toggleRemoveBtn(state.like.getNumLikes());
+
+        likeView.renderLikedRecipe(newItem);
     } else {
         // Toggle like button
         likeView.togglikeBtn(false);
-        // Remove recipe
         // remove item also from localStorage and from ul list
         state.like.removeLike(currentId);
+        // Toggle remove all recipes button
+        likeView.toggleRemoveBtn(state.like.getNumLikes());
         likeView.removeLikedRecipe(currentId);
     }
     likeView.toggleLikeMenu(state.like.getNumLikes());
@@ -84,11 +86,21 @@ const loadSavedRecipes = () => {
     // Toggle like menu
     likeView.toggleLikeMenu(state.like.getNumLikes());
 
-    // Render existing likes if ther
+    // Render existing likes if there are items in it
     if(state.like.getNumLikes() > 0) {
-        state.like.likes.forEach(like => likeView.renderLikedRecipe(like.id, searchView.limitRecipeTitle(like.title), like.author, like.img));
+        state.like.likes.forEach(like => likeView.renderLikedRecipe(like));
     }
+
+    likeView.toggleRemoveBtn(state.like.getNumLikes());
 };
+
+elements.removeRecipeBtn.addEventListener('click', () => {
+    likeView.removeLikedRecipes();
+    state.like.removeLikedRecipes();
+    likeView.toggleRemoveBtn(state.like.getNumLikes());
+    likeView.toggleLikeMenu(state.like.getNumLikes());
+    likeView.togglikeBtn(state.like.isLiked());
+});
 
 /*
     Recipe controller
@@ -108,10 +120,19 @@ const controlRecipe = async(event) => {
                 recipeView.highlightSelected(id);
             }
             // Get recipe data
-            await state.recipe.getRecipe();
+            // If we have such recipe in 'liked' list get data out there not from api
+            if(state.like && state.like.isLiked(id)) {
+                await state.recipe.getRecipe(state.like.getLiked(id));
+                console.log(state.like.getLiked(id));
+            }else {
+                await state.recipe.getRecipe();
+                state.recipe.parseIngredients();
+            }
             state.recipe.calcServings();
             state.recipe.calcTime();
-            state.recipe.parseIngredients();
+            // if((!state.like && !state.like.isLiked(id)) || state.like) {
+
+            // }
             if(event.type === 'load') {
                 loadSavedRecipes();
                 recipeView.renderRecipe(state.recipe, state.like.isLiked(id));

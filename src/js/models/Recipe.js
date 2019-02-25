@@ -8,17 +8,26 @@ export default class Recipe {
         // this.servings = this.defaultServings;
     }
 
-    async getRecipe() {
-        try {
-            const result = await axios(`${forkApi.dataPath}${forkApi.get}${forkApi.key}&rId=${this.id}`);
-            console.log(result);
-            this.img = result.data.recipe.image_url;
-            this.ingredients = result.data.recipe.ingredients;
-            this.publisher = result.data.recipe.publisher;
-            this.title = result.data.recipe.title;
-            this.source_url = result.data.recipe.source_url;
-        } catch(error) {
-            console.log('Something wrong... =(');
+    async getRecipe(recipe) {
+        // const recipe = await item;
+        if(!recipe) {
+            try {
+                const result = await axios(`${forkApi.dataPath}${forkApi.get}${forkApi.key}&rId=${this.id}`);
+                console.log(result);
+                this.img = result.data.recipe.image_url;
+                this.ingredients = result.data.recipe.ingredients;
+                this.publisher = result.data.recipe.publisher;
+                this.title = result.data.recipe.title;
+                this.source_url = result.data.recipe.source_url;
+            } catch(error) {
+                console.log('Something wrong... =(');
+            }
+        }else {
+            this.img = recipe.img;
+            this.ingredients = recipe.ingredients;
+            this.publisher = recipe.publisher;
+            this.title = recipe.title;
+            this.source_url = recipe.source_url;
         }
     }
 

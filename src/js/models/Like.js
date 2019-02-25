@@ -3,12 +3,14 @@ export default class Like {
         this.likes = [];
     }
 
-    addLike(id, title, author, img) {
+    addLike(recipe) {
         const item = {
-            id,
-            title,
-            author,
-            img
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            img: recipe.img,
+            ingredients: recipe.ingredients,
+            source_url: recipe.source_url
         };
         this.likes.push(item);
         this.persistData();
@@ -26,6 +28,11 @@ export default class Like {
         return this.likes.findIndex(elem => elem.id === id) !== -1;
     }
 
+    getLiked(id) {
+        const item = this.likes.find(elem => elem.id === id);
+        return item;
+    }
+
     getNumLikes() {
         return this.likes.length;
     }
@@ -41,7 +48,8 @@ export default class Like {
         }
     };
 
-    removeSavedRecipes() {
+    removeLikedRecipes() {
+        this.likes = [];
         localStorage.removeItem('likes');
     }
 };
