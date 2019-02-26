@@ -6,7 +6,7 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shopView from './views/shopView';
 import * as likeView from './views/likeView';
-import {elements, elementStrings, renderLoader, clearLoader, limitRecipeTitle} from './views/base';
+import {elements, elementStrings, renderLoader, clearLoader} from './views/base';
 
 /* Global state of the app
 * - Current recipe object
@@ -33,13 +33,20 @@ const controlSearch = async() => {
     searchView.renderResults(state.search.result);
 };
 
-elements.searchForm.addEventListener('submit', function(event) {
+elements.searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
     controlSearch();
 });
 
-elements.resultsPages.addEventListener('click', function(event) {
+elements.searchResults.addEventListener('click', (event) => {
+    // const id = window.location.hash.replace('#', '');
     const button =  event.target.closest('.btn');
+    const link = event.target.closest(`.${elementStrings.forkifyLink}`);
+    // const listItem = event.target.closest(`${elementStrings.forkListItem}`);
+
+    if(link) {
+        searchView.highlightSelected(link);
+    }
     if(button) {
         const nextPage = +(button.dataset.page);
         searchView.clearResults();
@@ -102,48 +109,48 @@ elements.removeRecipeBtn.addEventListener('click', () => {
     likeView.togglikeBtn(state.like.isLiked());
 });
 
+elements.likesList.addEventListener('click', (event) => {
+    const link = event.target.closest(`.${elementStrings.forkifyLink}`);
+    if(link) {
+        searchView.highlightSelected(link);
+    }
+});
+
 /*
     Recipe controller
 */
 
 const controlRecipe = async(event) => {
-    const id = window.location.hash.replace('#', '');
+    state.windowId = window.location.hash.replace('#', '');
 
-    if(id) {
-        state.recipe = new Recipe(id);
+    if(state.windowId) {
+        state.recipe = new Recipe(state.windowId);
         try {
             // Prepare UI for changes
             recipeView.clearRecipe();
             renderLoader(elements.recipeElem);
 
-            if(state.search) {
-                recipeView.highlightSelected(id);
-            }
-            // Get recipe data
             // If we have such recipe in 'liked' list get data out there not from api
-            if(state.like && state.like.isLiked(id)) {
-                await state.recipe.getRecipe(state.like.getLiked(id));
-                console.log(state.like.getLiked(id));
+            if(state.like && state.like.isLiked(state.windowId)) {
+                await state.recipe.getRecipe(state.like.getLiked(state.windowId));
             }else {
                 await state.recipe.getRecipe();
                 state.recipe.parseIngredients();
             }
             state.recipe.calcServings();
             state.recipe.calcTime();
-            // if((!state.like && !state.like.isLiked(id)) || state.like) {
 
-            // }
             if(event.type === 'load') {
                 loadSavedRecipes();
-                recipeView.renderRecipe(state.recipe, state.like.isLiked(id));
+                recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
 
                 // Toggle like button
-                likeView.togglikeBtn(state.like.isLiked(id));
+                likeView.togglikeBtn(state.like.isLiked(state.windowId));
             } else if(!state.like) {
                 recipeView.renderRecipe(state.recipe, false);
             } else {
-                likeView.togglikeBtn(state.like.isLiked(id));
-                recipeView.renderRecipe(state.recipe, state.like.isLiked(id));
+                likeView.togglikeBtn(state.like.isLiked(state.windowId));
+                recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
             }
 
             clearLoader();

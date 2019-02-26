@@ -7,6 +7,12 @@ export const clearResults = () => {
     elements.resultsPages.innerHTML = '';
 };
 
+export const highlightSelected = (active) => {
+    const resultArr = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}`));
+    resultArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
+    active.classList.add(`${elementStrings.activeRecipe}`);
+};
+
 const renderRecipe = recipe => {
     const markup = `
     <li class="forkify_list_item">
@@ -47,7 +53,6 @@ const createPaginAmount = (currentPage, perPage, total) => {
 const renderButtons = (page, recipesAmount, resPerPage) => {
     const totalPages = Math.ceil(recipesAmount / resPerPage);
     let button;
-    let paginAmout;
     // Decide which button should be render in order of current page
     if(totalPages >= 1) {
         // Render only next button;
@@ -56,8 +61,6 @@ const renderButtons = (page, recipesAmount, resPerPage) => {
                 ${createPaginBtn(page + 1, elementStrings.nextPagbtn)}
                 ${createPaginAmount(page, resPerPage, recipesAmount)}
             `;
-            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
-            // add Event listener
         }else if(page > 1 && page < totalPages) {
             // fix this
             button = `
@@ -65,17 +68,14 @@ const renderButtons = (page, recipesAmount, resPerPage) => {
                 ${createPaginBtn(page + 1, elementStrings.nextPagbtn)}
                 ${createPaginAmount(page, resPerPage, recipesAmount)}
             `;
-            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
         }else if(page === totalPages) {
             button = `
                 ${createPaginBtn(page - 1, elementStrings.prevPagbtn)}
                 ${createPaginAmount(page, resPerPage, recipesAmount)}
             `;
-            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
         }
     }
     elements.resultsPages.insertAdjacentHTML('beforeend', button);
-    // elements.resultsPages.insertAdjacentHTML('beforeend', paginAmout);
 };
 
 export const renderResults = (recipes, page = 1, resPerPage = 10) => {

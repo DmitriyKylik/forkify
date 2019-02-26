@@ -18,8 +18,8 @@ export const toggleLikeMenu = numLikes => {
 
 export const renderLikedRecipe = (recipe) => {
     const markup = `
-        <li class="forkify_list_item likes_item" data-likeid="${recipe.id}">
-            <a class="forkify_link likes_link" href="#${recipe.id}">
+        <li class="forkify_list_item likes_item">
+            <a class="forkify_link likes_link" href="#${recipe.id}" data-likeid="${recipe.id}">
                 <figure class="forkify_fig likes_fig">
                     <img src="${recipe.img}" alt="Test"/>
                 </figure>
@@ -35,7 +35,7 @@ export const renderLikedRecipe = (recipe) => {
 
 // remove by ID
 export const removeLikedRecipe = id => {
-    const item = document.querySelector(`.${elementStrings.likedRecipe}[data-likeid="${id}"]`);
+    const item = document.querySelector(`.${elements.likesList} a[data-likeid="${id}"]`);
     if(item) {
         item.parentElement.removeChild(item);
     }
@@ -43,5 +43,4 @@ export const removeLikedRecipe = id => {
 
 export const toggleRemoveBtn = numLikes => {
     numLikes > 0 ? elements.removeRecipeBtn.classList.remove(`${elementStrings.hide}`) : elements.removeRecipeBtn.classList.add(`${elementStrings.hide}`);
-    // On click event use removeLikedRecipe function in controller
 };

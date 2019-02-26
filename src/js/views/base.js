@@ -2,6 +2,7 @@ export const elements = {
     searchForm: document.querySelector('.search'),
     searchInput: document.querySelector('.search_input'),
     searchResList: document.querySelector('.results_list'),
+    forkifyList: document.querySelector('.forkify_list'),
     searchResults: document.querySelector('.results'),
     resultsPages: document.querySelector('.results_pages'),
     recipeElem: document.querySelector('.recipe'),
@@ -15,8 +16,8 @@ export const elements = {
 export const elementStrings = {
     loader: 'loader',
     hide: 'hide',
-    activeRecipe: 'results_link-active',
-    recipeLink: 'results_link',
+    activeRecipe: 'forkify_link-active',
+    forkListItem: 'forkify_list_item',
     nextPagbtn: {
         btnClass: 'results_btn-next',
         svgIcon: 'icon-triangle-right'
@@ -26,6 +27,7 @@ export const elementStrings = {
         svgIcon: 'icon-triangle-left'
     },
     forkifyList: 'forkify_list',
+    forkifyLink: 'forkify_link',
     recipeCount: 'recipe_count',
     recipeServings: 'recipe_serving_count',
     shoppingItem: 'shopping_item',
