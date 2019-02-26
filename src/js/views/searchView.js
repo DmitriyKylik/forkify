@@ -7,10 +7,19 @@ export const clearResults = () => {
     elements.resultsPages.innerHTML = '';
 };
 
-export const highlightSelected = (active) => {
-    const resultArr = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}`));
-    resultArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
-    active.classList.add(`${elementStrings.activeRecipe}`);
+export const highlightSelected = (id) => {
+    // Get all recipes links (result and likes)
+    const resultsArr = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}`));
+    // Get active links (result and likes)
+    const active = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}[href*="${id}"]`));
+    // Remove active class from all links
+    resultsArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
+    // Set remove class to active links (result and likes)
+    active.forEach(elem => elem.classList.add(`${elementStrings.activeRecipe}`));
+    // document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
+    // const resultArr = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}`));
+    // resultArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
+    // active.classList.add(`${elementStrings.activeRecipe}`);
 };
 
 const renderRecipe = recipe => {

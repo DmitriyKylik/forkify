@@ -15,7 +15,6 @@ import {elements, elementStrings, renderLoader, clearLoader} from './views/base'
 */
 
 const state = {};
-// state.like = new Like();
 const controlSearch = async() => {
     // 1) get query from view
     const query = searchView.getInput();
@@ -31,6 +30,7 @@ const controlSearch = async() => {
     await state.search.getResults();
     clearLoader();
     searchView.renderResults(state.search.result);
+    searchView.highlightSelected(state.windowId);
 };
 
 elements.searchForm.addEventListener('submit', (event) => {
@@ -39,14 +39,7 @@ elements.searchForm.addEventListener('submit', (event) => {
 });
 
 elements.searchResults.addEventListener('click', (event) => {
-    // const id = window.location.hash.replace('#', '');
     const button =  event.target.closest('.btn');
-    const link = event.target.closest(`.${elementStrings.forkifyLink}`);
-    // const listItem = event.target.closest(`${elementStrings.forkListItem}`);
-
-    if(link) {
-        searchView.highlightSelected(link);
-    }
     if(button) {
         const nextPage = +(button.dataset.page);
         searchView.clearResults();
@@ -109,13 +102,6 @@ elements.removeRecipeBtn.addEventListener('click', () => {
     likeView.togglikeBtn(state.like.isLiked());
 });
 
-elements.likesList.addEventListener('click', (event) => {
-    const link = event.target.closest(`.${elementStrings.forkifyLink}`);
-    if(link) {
-        searchView.highlightSelected(link);
-    }
-});
-
 /*
     Recipe controller
 */
@@ -151,6 +137,10 @@ const controlRecipe = async(event) => {
             } else {
                 likeView.togglikeBtn(state.like.isLiked(state.windowId));
                 recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
+            }
+
+            if(state.search || state.like) {
+                searchView.highlightSelected(state.windowId);
             }
 
             clearLoader();
