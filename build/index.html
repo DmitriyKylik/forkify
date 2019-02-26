@@ -36,7 +36,7 @@
                             <use xlink:href="img/sprite.svg#icon-heart"/>
                         </svg>
                     </button>
-                    <ul class="forkify_list likes_list">
+                    <ul class="forkify_list likes_list" data-idtype="like">
                     </ul>
                 </div>
             </div>
@@ -45,9 +45,20 @@
              <div class="forkify_main">
                 <!-- BEGIN forkify_results -->
                 <div class="forkify_aside results">
-                    <ul class="forkify_list results_list">
+                    <ul class="forkify_list results_list" data-idtype="id">
                     </ul>
                     <div class="results_pages">
+                        <!-- <div class="results_pages_amout bg-gray">
+                            <span class="results_pages_current">45</span>
+                            <span class="results_pages_separator">/</span>
+                            <span class="results_pages_total">90</span>
+                        </div> -->
+                        <!--     <button class="btn btn_pagination btn_inline bg-gray btn-round ${type.btnClass}" data-page="${page}">
+                                    <span class="btn_text">Page ${page}</span>
+                                    <svg class="icon ${type.svgIcon}">
+                                        <use href="img/sprite.svg#${type.svgIcon}"></use>
+                                    </svg>
+                                </button> -->
                     </div>
                 </div>
                 <!-- END forkify_results -->
