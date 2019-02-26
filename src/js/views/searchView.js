@@ -35,26 +35,47 @@ const createPaginBtn = (page, type) => {
     `;
 };
 
+const createPaginAmount = (currentPage, perPage, total) => {
+    return `
+    <div class="results_pages_amout bg-gray">
+        <span class="results_pages_current">${currentPage * perPage}</span>
+        <span class="results_pages_separator">/</span>
+        <span class="results_pages_total">${total}</span>
+    </div>`;
+};
+
 const renderButtons = (page, recipesAmount, resPerPage) => {
     const totalPages = Math.ceil(recipesAmount / resPerPage);
     let button;
+    let paginAmout;
     // Decide which button should be render in order of current page
     if(totalPages >= 1) {
         // Render only next button;
         if(page === 1) {
-            button = createPaginBtn(page + 1, elementStrings.nextPagbtn);
+            button = `
+                ${createPaginBtn(page + 1, elementStrings.nextPagbtn)}
+                ${createPaginAmount(page, resPerPage, recipesAmount)}
+            `;
+            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
             // add Event listener
         }else if(page > 1 && page < totalPages) {
             // fix this
             button = `
                 ${createPaginBtn(page - 1, elementStrings.prevPagbtn)}
                 ${createPaginBtn(page + 1, elementStrings.nextPagbtn)}
+                ${createPaginAmount(page, resPerPage, recipesAmount)}
             `;
+            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
         }else if(page === totalPages) {
-            button = createPaginBtn(page - 1, elementStrings.prevPagbtn);
+            button = `
+                ${createPaginBtn(page - 1, elementStrings.prevPagbtn)}
+                ${createPaginAmount(page, resPerPage, recipesAmount)}
+            `;
+            // paginAmout = createPaginAmount(page, resPerPage, recipesAmount);
         }
     }
     elements.resultsPages.insertAdjacentHTML('beforeend', button);
+    // elements.resultsPages.insertAdjacentHTML('beforeend', paginAmout);
 };
 
 export const renderResults = (recipes, page = 1, resPerPage = 10) => {

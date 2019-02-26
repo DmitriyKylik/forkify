@@ -8,7 +8,6 @@ export const clearRecipe = () => {
 export const highlightSelected = (id) => {
     const resultArr = Array.from(document.querySelectorAll(`.${elementStrings.recipeLink}`));
     const active = document.querySelector(`a[data-id="${id}"`);
-
     resultArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
     active.classList.add(`${elementStrings.activeRecipe}`);
 };

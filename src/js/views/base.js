@@ -25,6 +25,7 @@ export const elementStrings = {
         btnClass: 'results_btn-prev',
         svgIcon: 'icon-triangle-left'
     },
+    forkifyList: 'forkify_list',
     recipeCount: 'recipe_count',
     recipeServings: 'recipe_serving_count',
     shoppingItem: 'shopping_item',
