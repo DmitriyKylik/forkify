@@ -265,6 +265,8 @@
 }
 
 .shopping {
+    display: flex;
+    flex-flow: column;
     padding: 30px;
     &_title {
         margin-bottom: 20px;
@@ -272,6 +274,9 @@
         transform: skewY(-6deg);
         text-transform: uppercase;
         color: $dorange;
+    }
+    &_list {
+        flex: 1;
     }
     &_item {
         display: flex;
@@ -281,6 +286,13 @@
         color: #000;
         font-size: 14px;
         border-bottom: 1px solid $lgray;
+    }
+    &_footer {
+        position: relative;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
     }
 }
 
