@@ -64,6 +64,7 @@
         color: $dorange;
     }
     &_author {
+        font-weight: 700;
         color: $lbrown;
         font-size: 12px;
     }
@@ -261,6 +262,9 @@
         &_text {
             margin-bottom: 30px;
         }
+    }
+    &_author {
+        font-weight: 700;
     }
 }
 
