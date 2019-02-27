@@ -4,7 +4,7 @@ const config = require('./config');
 
 // Copy HTML Files
 gulp.task('html', function() {
-    return gulp.src('src/*')
+    return gulp.src('src/*.html')
         .pipe(gulp.dest(`${config.dest.html}`));
 });
 // reload .on('change', browserSync.reload);

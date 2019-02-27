@@ -17,7 +17,7 @@ gulp.task('js', function() {
             output: {
                 filename: 'app.min.js'
             },
-            mode: 'development',
+            mode: 'production',
             devtool: 'inline-source-map',
             module: {
                 rules: [

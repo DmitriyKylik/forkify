@@ -8,9 +8,5 @@ gulp.task('copy:fonts', function() {
 });
 
 gulp.task('copy', [
-    // 'copy:rootfiles',
-    // 'copy:lib',
-    // 'copy:data',
-    'copy:jsLib',
-    'copy:fonts'
+    'copy:jsLib'
 ]);
