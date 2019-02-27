@@ -126,13 +126,16 @@ const controlRecipe = async(event) => {
                 loadSavedRecipes();
             }
 
+            const isLiked = state.like.isLiked(state.windowId);
             // If we have such recipe in 'liked' list get data out there not from api
-            if(state.like && state.like.isLiked(state.windowId)) {
+            if(state.like && isLiked) {
                 await state.recipe.getRecipe(state.like.getLiked(state.windowId));
                 // Render shoplist
                 if(state.recipe.shopList) {
                     state.recipe.shopList.forEach(elem => shopView.renderShopItems(elem));
                     shopView.toggleSaveBtn(true);
+                }else {
+                    shopView.toggleSaveBtn(false);
                 }
                 // state.like.getLiked(state.windowId).shoplist.forEach(elem => shopView.renderShopItems(elem));
             }else {
@@ -145,15 +148,16 @@ const controlRecipe = async(event) => {
 
             // Check is id liked or not
             if(state.recipe.shopList) {
-                shopView.toggleSaveBtn(true);
+                shopView.toggleSaveBtn(isLiked);
             }
 
-            if(state.like.isLiked(state.windowId)) {
+            if(isLiked) {
                 // If state.like is exists but recipe that loads is not liked
-                likeView.togglikeBtn(state.like.isLiked(state.windowId));
-                recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
+                likeView.togglikeBtn(isLiked);
+                recipeView.renderRecipe(state.recipe, isLiked);
             } else {
-                recipeView.renderRecipe(state.recipe, false);
+                recipeView.renderRecipe(state.recipe, isLiked);
+                shopView.toggleSaveBtn(isLiked);
             }
 
             if(state.search || state.like) {
@@ -207,7 +211,7 @@ elements.saveShopListBtn.addEventListener('click', () => {
         item.shopList = state.shopList.items;
         // Save shopList in localStorage
         state.like.persistData();
-        alert('Sucsess');
+        alert('Success');
     } else {
         alert('Recipe is not saved! Please like it before save shop list!');
     }

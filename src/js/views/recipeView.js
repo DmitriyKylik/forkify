@@ -7,7 +7,8 @@ export const clearRecipe = () => {
 
 const convertFraction = count => {
     if(count) {
-        const [int, dec] = count.toString().split('.').map(elem => parseInt(elem, 10) );
+        const newCount = Math.round(count * 100) / 100;
+        const [int, dec] = newCount.toString().split('.').map(elem => parseInt(elem, 10) );
         if(!dec) {
             return count;
         }
