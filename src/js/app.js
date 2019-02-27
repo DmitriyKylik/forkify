@@ -105,6 +105,8 @@ elements.removeRecipeBtn.addEventListener('click', () => {
     likeView.toggleRemoveBtn(state.like.getNumLikes());
     likeView.toggleLikeMenu(state.like.getNumLikes());
     likeView.togglikeBtn(state.like.isLiked());
+    shopView.toggleSaveBtn(false);
+    shopView.clearShopList();
 });
 
 /*
