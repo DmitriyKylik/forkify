@@ -1,41 +1,92 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Title</title>
+    <title>Search over 1,000,000 recipes</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/app.min.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/co/4.1.0/index.js"></script>
-    <style>
-        .box {
-            width: 400px;
-            padding: 60px;
-            text-align: center;
-            font-size: 30px;
-            margin-top: 50px;
-        }
-
-        .green { background-color: green; }
-
-        .blue { background-color: dodgerblue; }
-
-        .orange { background-color: orangered; }
-
-    </style>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 </head>
 <body>
     <!-- BEGIN wrapper -->
-     <div class="wrapper">
-        <h1>Section 7: Let's Get Ready !!! for the Future: ES6 / ES2015</h1>
-
-        <div class="box green">I'm !</div>
-        <div class="box blue">I'm blue!</div>
-        <div class="box orange">I'm orange!</div>
+    <div class="wrapper grad-orange">
+        <!-- BEGIN forkify -->
+        <div class="forkify">
+            <!-- BEGIN forkify_header -->
+            <div class="forkify_header bg-gray">
+                <img src="img/logo.png" alt="logo" class="forkify_header_logo"/>
+                <form action="" class="search">
+                    <div class="search_input_wrap"><input type="text" class="search_input" placeholder="Search over 1 000 000 recipes..."/></div>
+                    <button class="btn btn_search grad-orange scaled">
+                        <svg class="icon icon-search">
+                            <use xlink:href="img/sprite.svg#icon-search"/>
+                        </svg>
+                        <span class="btn_text">search</span>
+                    </button>
+                </form>
+                    <!-- Create delete all saved recipes button  -->
+                <button class="btn btn_remove grad-orange scaled hide">
+                    <span class="btn_text">Remove saved recipes</span>
+                </button>
+                <div class="likes hide">
+                    <button class="btn_heart scaled">
+                        <svg class="icon icon-heart">
+                            <use xlink:href="img/sprite.svg#icon-heart"/>
+                        </svg>
+                    </button>
+                    <ul class="forkify_list likes_list">
+                    </ul>
+                </div>
+            </div>
+            <!-- END forkify_header -->
+            <!-- BEGIN forkify_main -->
+             <div class="forkify_main">
+                <!-- BEGIN forkify_results -->
+                <div class="forkify_aside results">
+                    <ul class="forkify_list results_list">
+                    </ul>
+                    <div class="results_pages">
+                        <!-- <div class="results_pages_amout bg-gray">
+                            <span class="results_pages_current">45</span>
+                            <span class="results_pages_separator">/</span>
+                            <span class="results_pages_total">90</span>
+                        </div> -->
+                        <!--     <button class="btn btn_pagination btn_inline bg-gray btn-round ${type.btnClass}" data-page="${page}">
+                                    <span class="btn_text">Page ${page}</span>
+                                    <svg class="icon ${type.svgIcon}">
+                                        <use href="img/sprite.svg#${type.svgIcon}"></use>
+                                    </svg>
+                                </button> -->
+                    </div>
+                </div>
+                <!-- END forkify_results -->
+                <!-- BEGIN recipe -->
+                <div class="recipe bg-gray">
+                </div>
+                <!-- END recipe -->
+            <!-- BEGIN shopping -->
+             <div class="forkify_aside shopping">
+                <h2 class="shopping_title">my shopping list</h2>
+                <ul class="shopping_list">
+                </ul>
+                <div class="shopping_footer">
+                    <button class="btn btn_sm btn_shop grad-orange scaled hide">
+                        <span class="btn_text">Save shop list</span>
+                    </button>
+                </div>
+            </div>
+            <!-- END shopping -->
+            </div>
+            <!-- END forkify_main -->
+        </div>
+            <!-- END forkify -->
     </div>
     <!-- END wrapper -->
     <script  src="js/lib/lib.min.js"></script>
-    <!-- <script  src="@babel/polyfill/dist/polyfill.js"></script> -->
-    <script  src="js/app.js"></script>
+    <script  src="js/app.min.js"></script>
 </body>
 </html>
+
+

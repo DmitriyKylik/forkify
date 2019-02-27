@@ -1,7 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-inst" viewBox="0 0 36 36">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="icon-check" viewBox="0 0 20 20">
+    <path d="M8.294 16.998c-.435 0-.847-.203-1.111-.553L3.61 11.724a1.392 1.392 0 0 1 .27-1.951 1.392 1.392 0 0 1 1.953.27l2.351 3.104 5.911-9.492c.407-.652 1.267-.852 1.921-.445s.854 1.266.446 1.92L9.478 16.34a1.39 1.39 0 0 1-1.12.656c-.022.002-.042.002-.064.002z"/>
+</symbol><symbol id="icon-circle-cross" viewBox="0 0 20 20">
+    <path d="M10 1.6a8.4 8.4 0 1 0 0 16.8 8.4 8.4 0 0 0 0-16.8zm4.789 11.461L13.06 14.79 10 11.729l-3.061 3.06L5.21 13.06 8.272 10 5.211 6.939 6.94 5.211 10 8.271l3.061-3.061 1.729 1.729L11.728 10l3.061 3.061z"/>
+</symbol><symbol id="icon-circle-minus" viewBox="0 0 20 20">
+    <path d="M10 1.6a8.4 8.4 0 1 0 0 16.8 8.4 8.4 0 0 0 0-16.8zm5 9.4H5V9h10v2z"/>
+</symbol><symbol id="icon-circle-plus" viewBox="0 0 20 20">
+    <path d="M10 1.6a8.4 8.4 0 1 0 0 16.8 8.4 8.4 0 0 0 0-16.8zm5 9.4h-4v4H9v-4H5V9h4V5h2v4h4v2z"/>
+</symbol><symbol id="icon-cw" viewBox="0 0 20 20">
+    <path d="M19.315 10h-2.372v-.205c-.108-4.434-3.724-7.996-8.169-7.996C4.259 1.799.6 5.471.6 10s3.659 8.199 8.174 8.199a8.13 8.13 0 0 0 5.033-1.738l-1.406-1.504a6.099 6.099 0 0 1-3.627 1.193c-3.386 0-6.131-2.754-6.131-6.15s2.745-6.15 6.131-6.15c3.317 0 6.018 2.643 6.125 5.945V10h-2.672l3.494 3.894L19.315 10z"/>
+</symbol><symbol id="icon-heart-outlined" viewBox="0 0 20 20">
+    <path d="M17.19 4.156c-1.672-1.535-4.383-1.535-6.055 0L10 5.197 8.864 4.156c-1.672-1.535-4.382-1.535-6.054 0-1.881 1.726-1.881 4.519 0 6.245L10 17l7.19-6.599c1.88-1.726 1.88-4.52 0-6.245zm-1.066 5.219L10 15.09 3.875 9.375c-.617-.567-.856-1.307-.856-2.094s.138-1.433.756-1.999c.545-.501 1.278-.777 2.063-.777s1.517.476 2.062.978L10 7.308l2.099-1.826c.546-.502 1.278-.978 2.063-.978s1.518.276 2.063.777c.618.566.755 1.212.755 1.999s-.238 1.528-.856 2.095z"/>
+</symbol><symbol id="icon-heart" viewBox="0 0 20 20">
+    <path d="M17.19 4.155c-1.672-1.534-4.383-1.534-6.055 0L10 5.197 8.864 4.155c-1.672-1.534-4.382-1.534-6.054 0-1.881 1.727-1.881 4.52 0 6.246L10 17l7.19-6.599c1.88-1.726 1.88-4.52 0-6.246z"/>
+</symbol><symbol id="icon-inst" viewBox="0 0 36 36">
     <image width="36" height="36" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAQAAABLCVATAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfiDBsMLxmq3UR/AAACKElEQVRIx62WP2gTURzHP5c7G3WIKNIb3dJuChYcU66KcyFTF0EcpCCKS0Fypbicg5MIXQqSxalQ26WbiotIlaadtMM1QyENSNMcJF1Sfg71Yu/uvcsf8/st7353fN77fd/v994ZqM2kwAxT5LnKFaBJgz2+85HPnNKnjeNRQzRew2O8N2SMEi0tJPQWLmNpmDzbPSGhbzOhwxRo9I0RhAYFFcbpI6W4t3HimAmOB8YIwnE0wSyVoTCCUCH7D1QaGiMIpRBjD6FOVCkbMsBTLsfLegGfQOE+C5hxfS/xDMBKVrErgcL3ZVd25bcsJtd0iAVOcrG+EvRIEOSr+Kr07mWYSZbUdWW9Xkx7e9fidu8GDCv2gnYSbhpUuRGPBufGq5SBBxTPxXJJUBWayYwD+SCzMi+BlLuxsgQyL7PyXgKVRs2MCg8+axwAK93ICnDAGnvq1HKZdF2yipHaMhFBIrZFh7nu0xwdtvScwKKhTg5qLPMEeIfwkCLL1PSgI4ufyV0LbRGDxxSBDm9x0zL7ZfGD+7q3p7zgDXeAbxz+jRnqT3eULbIv69peX5eqskUsvlDHjuLLPGeDChKb1uAW07xOrqfOJwAvzrdkSdO4viyJmVyPd8azaf//wWYCLYzkbTCAvWQzHI7s8B/ZdQTgcDIw5kQtyYiubIBJdgbQZjJtB7K4fRRDG7fnuQLYeNS1kDqv4p1wVvVqM5nGYYo818gBAUfpv35/AODNznvk0CadAAAAAElFTkSuQmCC"/>
+</symbol><symbol id="icon-man" viewBox="0 0 20 20">
+    <path d="M10 4a2 2 0 1 0-.001-4.001A2 2 0 0 0 10 4zm5.978 7.583c-.385-1.775-1.058-4.688-2.042-5.894-.957-1.173-2.885-1.222-3.936-1.222-1.051 0-2.979.049-3.936 1.222-.984 1.206-1.657 4.119-2.042 5.894-.213.983 1.154 1.344 1.511.355.531-1.473.941-2.71 1.839-3.736C7.844 11.109 6.102 16.168 6 19a1 1 0 0 0 1.934.358C8.391 17.771 10 13.355 10 13.355s1.609 4.416 2.066 6.003A1 1 0 0 0 14 19c-.102-2.832-1.844-7.891-1.372-10.797.898 1.026 1.308 2.263 1.839 3.736.356.988 1.724.627 1.511-.356z"/>
+</symbol><symbol id="icon-search" viewBox="0 0 20 20">
+    <path d="M17.545 15.467l-3.779-3.779a6.15 6.15 0 0 0 .898-3.21c0-3.417-2.961-6.377-6.378-6.377S2.1 4.87 2.1 8.287c0 3.416 2.961 6.377 6.377 6.377a6.15 6.15 0 0 0 3.115-.844l3.799 3.801a.953.953 0 0 0 1.346 0l.943-.943c.371-.371.236-.84-.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z"/>
+</symbol><symbol id="icon-shopping-cart" viewBox="0 0 20 20">
+    <path d="M13 17a2 2 0 1 0 3.999.001A2 2 0 0 0 13 17zM3 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm3.547-4.828L17.615 9.01A.564.564 0 0 0 18 8.5V3H4V1.4c0-.22-.181-.4-.399-.4H.399A.401.401 0 0 0 0 1.4V3h2l1.91 8.957.09.943v1.649c0 .219.18.4.4.4h13.2c.22 0 .4-.182.4-.4V13H6.752c-1.15 0-1.174-.551-.205-.828z"/>
+</symbol><symbol id="icon-squared-cross" viewBox="0 0 20 20">
+    <path d="M16 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2.939 12.789L10 11.729l-3.061 3.06-1.729-1.728L8.271 10l-3.06-3.061L6.94 5.21 10 8.271l3.059-3.061 1.729 1.729L11.729 10l3.06 3.061-1.728 1.728z"/>
 </symbol><symbol id="icon-star_empty" viewBox="0 0 21 21">
     <path fill-rule="evenodd" stroke-width="2" d="M10.083 4.319l1.787 4.963h4.798l-3.915 2.914 1.4 5.117-4.07-3.068-4.069 3.068 1.4-5.117-3.915-2.914h4.798l1.786-4.963z"/>
+</symbol><symbol id="icon-stopwatch" viewBox="0 0 20 20">
+    <path d="M7.376 6.745c-.447.275 1.197 4.242 1.598 4.888a1.206 1.206 0 0 0 2.053-1.266c-.397-.648-3.205-3.898-3.651-3.622zm-.335-4.343a8.98 8.98 0 0 1 5.918 0c.329.114.765-.115.572-.611-.141-.36-.277-.712-.332-.855-.131-.339-.6-.619-.804-.665C11.623.097 10.823 0 10 0S8.377.097 7.604.271c-.204.046-.672.326-.803.665l-.332.855c-.193.496.243.726.572.611zm12.057.784a10.132 10.132 0 0 0-1.283-1.285c-.153-.129-.603-.234-.888.051l-1.648 1.647c.402.288.793.605 1.155.966s.677.752.966 1.155l1.647-1.647c.286-.286.181-.735.051-.887zM10 2.9a8.1 8.1 0 1 0-.001 16.201A8.1 8.1 0 0 0 10 2.9zm0 14.201A6.1 6.1 0 1 1 10.001 4.9 6.1 6.1 0 0 1 10 17.1z"/>
+</symbol><symbol id="icon-triangle-left" viewBox="0 0 20 20">
+    <path d="M14 5v10l-9-5 9-5z"/>
+</symbol><symbol id="icon-triangle-right" viewBox="0 0 20 20">
+    <path d="M15 10l-9 5V5l9 5z"/>
 </symbol><symbol id="icon-waves-yellow" viewBox="0 0 19 19">
     <image width="19" height="108" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAABsAgMAAAD1SmFLAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAADFBMVEXy2AD////y2AD///80kKTmAAAAAnRSTlMAAHaTzTgAAAABYktHRAH/Ai3eAAAAB3RJTUUH4gUBFjEhdZswEgAAADtJREFUKM9jYGJQYGJg4GpYwdXAoLVoldYChhWrulasYFigxbRAg4GBg6GBgSEUCEKGADnql8FJEuEXAKLRsMGW9sPrAAAAAElFTkSuQmCC"/>
 </symbol><symbol id="icon-waves" viewBox="0 0 31 6">
