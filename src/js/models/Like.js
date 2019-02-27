@@ -10,7 +10,7 @@ export default class Like {
             publisher: recipe.publisher,
             img: recipe.img,
             ingredients: recipe.ingredients,
-            source_url: recipe.source_url
+            source_url: recipe.source_url,
         };
         this.likes.push(item);
         this.persistData();

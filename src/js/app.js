@@ -54,8 +54,10 @@ elements.searchResults.addEventListener('click', (event) => {
 const controlLike  = () => {
     if(!state.like) state.like = new Like();
     const currentId = state.recipe.id;
+    let newItem;
     if(!state.like.isLiked(currentId)) {
-        const newItem = state.like.addLike(state.recipe);
+        // If shoplist exists
+        newItem = state.like.addLike(state.recipe);
 
         // Toggle like button
         likeView.togglikeBtn(true);
@@ -64,11 +66,14 @@ const controlLike  = () => {
         likeView.toggleRemoveBtn(state.like.getNumLikes());
 
         likeView.renderLikedRecipe(newItem);
+        // Render shere a shop list of the liked recipe
     } else {
         // Toggle like button
         likeView.togglikeBtn(false);
+
         // remove item also from localStorage and from ul list
         state.like.removeLike(currentId);
+
         // Toggle remove all recipes button
         likeView.toggleRemoveBtn(state.like.getNumLikes());
         likeView.removeLikedRecipe(currentId);
@@ -85,10 +90,10 @@ const loadSavedRecipes = () => {
 
     // Toggle like menu
     likeView.toggleLikeMenu(state.like.getNumLikes());
-
     // Render existing likes if there are items in it
     if(state.like.getNumLikes() > 0) {
         state.like.likes.forEach(like => likeView.renderLikedRecipe(like));
+        // Render here a shop list of the liked recipe
     }
 
     likeView.toggleRemoveBtn(state.like.getNumLikes());
@@ -108,35 +113,47 @@ elements.removeRecipeBtn.addEventListener('click', () => {
 
 const controlRecipe = async(event) => {
     state.windowId = window.location.hash.replace('#', '');
-
     if(state.windowId) {
         state.recipe = new Recipe(state.windowId);
         try {
             // Prepare UI for changes
             recipeView.clearRecipe();
             renderLoader(elements.recipeElem);
+            shopView.clearShopList();
+
+            // Check for liked recipes
+            if(event.type === 'load') {
+                loadSavedRecipes();
+            }
 
             // If we have such recipe in 'liked' list get data out there not from api
             if(state.like && state.like.isLiked(state.windowId)) {
                 await state.recipe.getRecipe(state.like.getLiked(state.windowId));
+                // Render shoplist
+                if(state.recipe.shopList) {
+                    state.recipe.shopList.forEach(elem => shopView.renderShopItems(elem));
+                    shopView.toggleSaveBtn(true);
+                }
+                // state.like.getLiked(state.windowId).shoplist.forEach(elem => shopView.renderShopItems(elem));
             }else {
                 await state.recipe.getRecipe();
                 state.recipe.parseIngredients();
             }
+            // On load or hash change event check if recipe is liked and does it have shoplist
             state.recipe.calcServings();
             state.recipe.calcTime();
 
-            if(event.type === 'load') {
-                loadSavedRecipes();
-                recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
+            // Check is id liked or not
+            if(state.recipe.shopList) {
+                shopView.toggleSaveBtn(true);
+            }
 
-                // Toggle like button
-                likeView.togglikeBtn(state.like.isLiked(state.windowId));
-            } else if(!state.like) {
-                recipeView.renderRecipe(state.recipe, false);
-            } else {
+            if(state.like.isLiked(state.windowId)) {
+                // If state.like is exists but recipe that loads is not liked
                 likeView.togglikeBtn(state.like.isLiked(state.windowId));
                 recipeView.renderRecipe(state.recipe, state.like.isLiked(state.windowId));
+            } else {
+                recipeView.renderRecipe(state.recipe, false);
             }
 
             if(state.search || state.like) {
@@ -156,7 +173,11 @@ const controlRecipe = async(event) => {
 ['hashchange', 'load'].forEach(elem => window.addEventListener(elem, (event) => controlRecipe(event) ) );
 
 elements.shoppingList.addEventListener('click', (event) => {
-    const id = event.target.closest(`.${elementStrings.shoppingItem}`).dataset.shopid;
+    const shopItem = event.target.closest(`.${elementStrings.shoppingItem}`);
+    let id;
+    if(shopItem) {
+        id = shopItem.dataset.shopid;
+    }
     if(event.target.matches('.btn_cross, .btn_cross *')) {
         state.shopList.removeItem(id);
         shopView.removeItem(id);
@@ -167,18 +188,30 @@ elements.shoppingList.addEventListener('click', (event) => {
 });
 
 /*
-     List controller
+     Shop controller
 */
 
 const controlShopList = (recipe) => {
-
     if(!state.shopList) state.shopList = new Shop();
     shopView.clearShopList();
     recipe.ingredients.forEach(elem => {
         const item = state.shopList.addItem(elem.count, elem.unit, elem.ingredient);
         shopView.renderShopItems(item);
     });
+    shopView.toggleSaveBtn(true);
 };
+// Save data in state.like
+elements.saveShopListBtn.addEventListener('click', () => {
+    if(state.like.isLiked(state.windowId)) {
+        const item = state.like.getLiked(state.windowId);
+        item.shopList = state.shopList.items;
+        // Save shopList in localStorage
+        state.like.persistData();
+        alert('Sucsess');
+    } else {
+        alert('Recipe is not saved! Please like it before save shop list!');
+    }
+});
 
 elements.recipeElem.addEventListener('click', (event) => {
     const {target} = event;

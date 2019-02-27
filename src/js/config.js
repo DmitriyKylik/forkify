@@ -1,6 +1,6 @@
 export const proxy = 'https://cors-anywhere.herokuapp.com/';
 export const forkApi = {
-    key: '?key=2a95efc2bb6173de7201f31f9b18a2a9',
+    key: '?key=34fd73875eea4b22c4d020f02e967e51',
     dataPath: 'https://www.food2fork.com/api/',
     get: 'get',
     search: 'search'

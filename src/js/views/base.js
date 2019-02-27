@@ -10,7 +10,8 @@ export const elements = {
     shoppingList: document.querySelector('.shopping_list'),
     likePannel: document.querySelector('.likes'),
     likesList: document.querySelector('.likes_list'),
-    removeRecipeBtn: document.querySelector('.btn_remove')
+    removeRecipeBtn: document.querySelector('.btn_remove'),
+    saveShopListBtn: document.querySelector('.btn_shop')
 };
 
 export const elementStrings = {

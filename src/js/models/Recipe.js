@@ -1,19 +1,15 @@
 import axios from 'axios';
-import {forkApi, proxy} from '../config';
+import {forkApi} from '../config';
 
 export default class Recipe {
     constructor(id) {
         this.id = id;
-        // this.defaultServings = 4;
-        // this.servings = this.defaultServings;
     }
 
     async getRecipe(recipe) {
-        // const recipe = await item;
         if(!recipe) {
             try {
                 const result = await axios(`${forkApi.dataPath}${forkApi.get}${forkApi.key}&rId=${this.id}`);
-                console.log(result);
                 this.img = result.data.recipe.image_url;
                 this.ingredients = result.data.recipe.ingredients;
                 this.publisher = result.data.recipe.publisher;
@@ -28,6 +24,9 @@ export default class Recipe {
             this.publisher = recipe.publisher;
             this.title = recipe.title;
             this.source_url = recipe.source_url;
+            if(recipe.shopList) {
+                this.shopList = recipe.shopList;
+            }
         }
     }
 

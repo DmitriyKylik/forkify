@@ -23,6 +23,10 @@ export const renderShopItems = (ingredient) => {
     elements.shoppingList.insertAdjacentHTML('beforeend', markup);
 };
 
+export const toggleSaveBtn = (isLiked) => {
+    isLiked ? elements.saveShopListBtn.classList.remove(`${elementStrings.hide}`) : elements.saveShopListBtn.classList.add(`${elementStrings.hide}`);
+};
+
 export const removeItem = (id) => {
     const item = document.querySelector(`[data-shopid=${id}]`);
     if(item) {
