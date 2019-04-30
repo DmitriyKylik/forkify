@@ -6,10 +6,6 @@ $lgray: #f2efee;
 $dgray: #eeecea;
 $lbrown: #968b87;
 
-.hide {
-    visibility: hidden;
-}
-
 .btn {
     display: flex;
     align-items: center;
@@ -35,6 +31,7 @@ $lbrown: #968b87;
     &_heart {
         background: none;
         & .icon {
+            vertical-align: middle;
             fill: $dorange;
             font-size: 38px;
         }

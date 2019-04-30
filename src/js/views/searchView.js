@@ -16,10 +16,10 @@ export const highlightSelected = (id) => {
     resultsArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
     // Set remove class to active links (result and likes)
     active.forEach(elem => elem.classList.add(`${elementStrings.activeRecipe}`));
-    // document.querySelector(`.results__link[href*="${id}"]`).classList.add('results__link--active');
-    // const resultArr = Array.from(document.querySelectorAll(`.${elementStrings.forkifyLink}`));
-    // resultArr.forEach(elem => elem.classList.remove(`${elementStrings.activeRecipe}`));
-    // active.classList.add(`${elementStrings.activeRecipe}`);
+};
+
+export const displayMessage = (message) => {
+    elements.forkifyHeaderMessage.innerHTML = message;
 };
 
 const renderRecipe = recipe => {

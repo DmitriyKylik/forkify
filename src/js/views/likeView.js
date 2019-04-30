@@ -1,4 +1,4 @@
-import {elements, elementStrings, limitRecipeTitle} from './base';
+import {elements, elementStrings, limitRecipeTitle, supportClasses} from './base';
 
 export const removeLikedRecipes = () => {elements.likesList.innerHTML = '';};
 
@@ -13,7 +13,7 @@ export const togglikeBtn = isLiked => {
 };
 
 export const toggleLikeMenu = numLikes => {
-    numLikes > 0 ? elements.likePannel.classList.remove(`${elementStrings.hide}`) : elements.likePannel.classList.add(`${elementStrings.hide}`) ;
+    numLikes > 0 ? elements.likePannel.classList.remove(`${supportClasses.hide}`) : elements.likePannel.classList.add(`${supportClasses.hide}`) ;
 };
 
 export const renderLikedRecipe = (recipe) => {
@@ -42,5 +42,5 @@ export const removeLikedRecipe = id => {
 };
 
 export const toggleRemoveBtn = numLikes => {
-    numLikes > 0 ? elements.removeRecipeBtn.classList.remove(`${elementStrings.hide}`) : elements.removeRecipeBtn.classList.add(`${elementStrings.hide}`);
+    numLikes > 0 ? elements.removeRecipeBtn.classList.remove(`${supportClasses.hide}`) : elements.removeRecipeBtn.classList.add(`${supportClasses.hide}`);
 };

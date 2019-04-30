@@ -74,7 +74,7 @@ const createRecipeDirections = (recipe) => {
         <p class="recipe_directions_text">This recipe was carefully designed and tested
             by <span class="recipe_author">${recipe.publisher}</span>.
         </p>
-        <a href="${recipe.source_url}" class="btn btn_directions grad-orange scaled">
+        <a href="${recipe.source_url}" target="_blank" class="btn btn_directions grad-orange scaled">
             <span class="button_directions_text">directions</span>
             <svg class="icon icon-search">
                 <use xlink:href="img/sprite.svg#icon-search"/>

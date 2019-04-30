@@ -11,12 +11,14 @@ export const elements = {
     likePannel: document.querySelector('.likes'),
     likesList: document.querySelector('.likes_list'),
     removeRecipeBtn: document.querySelector('.btn_remove'),
-    saveShopListBtn: document.querySelector('.btn_shop')
+    saveShopListBtn: document.querySelector('.btn_shop'),
+    forkifyMain: document.querySelector('.forkify_main'),
+    forkifyWrapper: document.querySelector('.forkify_wrapper'),
+    forkifyHeaderMessage: document.querySelector('.forkify_header_message')
 };
 
 export const elementStrings = {
     loader: 'loader',
-    hide: 'hide',
     activeRecipe: 'forkify_link-active',
     forkListItem: 'forkify_list_item',
     nextPagbtn: {
@@ -39,7 +41,12 @@ export const elementStrings = {
     iconHeartOutline: 'icon-heart-outlined'
 };
 
-export const renderLoader = parent => {
+export const supportClasses = {
+    hide: 'hide', // visibility: hidden
+    removed: 'removed' // display: none
+};
+
+export const renderLoader = (parent, position = 'afterbegin') => {
     const loader = `
         <div class="${elementStrings.loader}">
             <svg class="icon icon-cw">
@@ -47,13 +54,25 @@ export const renderLoader = parent => {
             </svg>
         </div>
     `;
-    parent.insertAdjacentHTML('afterbegin', loader);
+    parent.insertAdjacentHTML( position, loader);
 };
 
 export const clearLoader = () => {
     const loader = document.querySelector(`.${elementStrings.loader}`);
     if(loader) {
         loader.parentElement.removeChild(loader);
+    }
+};
+
+export const hideForkifyMain = () => {
+    if(elements.forkifyMain) {
+        elements.forkifyMain.classList.add(supportClasses.removed);
+    }
+};
+
+export const displayForkifyMain = () => {
+    if(elements.forkifyMain) {
+        elements.forkifyMain.classList.remove(supportClasses.removed);
     }
 };
 

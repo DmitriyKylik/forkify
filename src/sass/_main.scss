@@ -1,5 +1,9 @@
 .wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
+    min-width: 1200px;
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
     min-height: 100vh;
@@ -7,23 +11,45 @@
     color: #fff;
 }
 
+.forkify_wrapper {
+    width: 1200px;
+    margin: 28px auto 50px;
+    position: relative;
+    & > .loader {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
 .forkify {
     display: flex;
     flex-flow: column nowrap;
-    max-width: 1200px;
-    min-width: 1100px;
-    min-height: calc(100vh - 100px);
-    margin: 28px auto;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 60px;
     box-shadow: 0 2rem 3rem 0.5rem rgba(125, 125, 125, 0.5);
     &_header {
         display: flex;
-        height: 130px;
         justify-content: space-around;
         align-items: center;
+        flex-wrap: wrap;
+        padding: 15px;
         &_logo {
             width: 150px;
+        }
+        &_title {
+            margin-bottom: 15px;
+        }
+        &_textual {
+            flex-basis: 100%;
+            text-align: center;
+            color: $dorange;
+            font-style: italic;
+        }
+        &_message {
+            min-height: 22px;
+            margin-top: 15px;
         }
     }
     &_main {
@@ -94,13 +120,13 @@
 }
 
 .likes {
-    position: relative;
+    padding: 5px;
     &_list {
         width: 300px;
         display: none;
         position: absolute;
-        top: 40px;
-        right: 0;
+        top: 100px;
+        right: 40px;
         background: #fff;
         transition: all 0.3s;
         z-index: 10;
@@ -326,5 +352,3 @@
         text-overflow: ellipsis;
     }
 }
-
-

@@ -6,7 +6,7 @@ import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as shopView from './views/shopView';
 import * as likeView from './views/likeView';
-import {elements, elementStrings, renderLoader, clearLoader} from './views/base';
+import {elements, elementStrings, renderLoader, clearLoader, hideForkifyMain, displayForkifyMain} from './views/base';
 
 /* Global state of the app
 * - Current recipe object
@@ -16,6 +16,7 @@ import {elements, elementStrings, renderLoader, clearLoader} from './views/base'
 
 const state = {};
 const controlSearch = async() => {
+    state.windowId = window.location.hash.replace('#', '');
     // 1) get query from view
     const query = searchView.getInput();
 
@@ -25,12 +26,24 @@ const controlSearch = async() => {
     // 3) Prepare UI for results
     searchView.clearInput();
     searchView.clearResults();
-    renderLoader(elements.searchResults);
 
-    await state.search.getResults();
-    clearLoader();
-    searchView.renderResults(state.search.result);
-    searchView.highlightSelected(state.windowId);
+    if(state.windowId) {
+        renderLoader(elements.searchResults);
+    } else {
+        renderLoader(elements.forkifyWrapper, 'beforeend');
+    }
+    try {
+        await state.search.getResults();
+        clearLoader();
+        searchView.displayMessage(state.search.message);
+        if(state.search.result.length !== 0) {
+            displayForkifyMain();
+            searchView.renderResults(state.search.result);
+            searchView.highlightSelected(state.windowId);
+        }
+    }catch(error) {
+        console.log(error);
+    }
 };
 
 elements.searchForm.addEventListener('submit', (event) => {
@@ -116,6 +129,7 @@ elements.removeRecipeBtn.addEventListener('click', () => {
 const controlRecipe = async(event) => {
     state.windowId = window.location.hash.replace('#', '');
     if(state.windowId) {
+        displayForkifyMain();
         state.recipe = new Recipe(state.windowId);
         try {
             // Prepare UI for changes
@@ -139,7 +153,6 @@ const controlRecipe = async(event) => {
                 }else {
                     shopView.toggleSaveBtn(false);
                 }
-                // state.like.getLiked(state.windowId).shoplist.forEach(elem => shopView.renderShopItems(elem));
             }else {
                 await state.recipe.getRecipe();
                 state.recipe.parseIngredients();
@@ -171,8 +184,8 @@ const controlRecipe = async(event) => {
             console.log(error);
         }
     } else {
+        hideForkifyMain();
         loadSavedRecipes();
-        console.log(localStorage);
     }
 };
 

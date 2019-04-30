@@ -3,7 +3,7 @@
 <head>
     <title>Search over 1,000,000 recipes</title>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/app.min.css"/>
@@ -12,76 +12,73 @@
 <body>
     <!-- BEGIN wrapper -->
     <div class="wrapper grad-orange">
-        <!-- BEGIN forkify -->
-        <div class="forkify">
-            <!-- BEGIN forkify_header -->
-            <div class="forkify_header bg-gray">
-                <img src="img/logo.png" alt="logo" class="forkify_header_logo"/>
-                <form action="" class="search">
-                    <div class="search_input_wrap"><input type="text" class="search_input" placeholder="Search over 1 000 000 recipes..."/></div>
-                    <button class="btn btn_search grad-orange scaled">
-                        <svg class="icon icon-search">
-                            <use xlink:href="img/sprite.svg#icon-search"/>
-                        </svg>
-                        <span class="btn_text">search</span>
+        <!-- BEGIN forkify_wrapper -->
+         <div class="forkify_wrapper">
+            <!-- BEGIN forkify -->
+            <div class="forkify">
+                <!-- BEGIN forkify_header -->
+                <div class="forkify_header bg-gray">
+                    <h2 class="forkify_header_title forkify_header_textual">
+                        Search recipies by ingredients or name
+                    </h2>
+                    <img src="img/logo.png" alt="logo" class="forkify_header_logo"/>
+                    <form action="" class="search">
+                        <div class="search_input_wrap"><input type="text" class="search_input" placeholder="Pizza, burger, pasta, tomato chicken..."/></div>
+                        <button class="btn btn_search grad-orange scaled">
+                            <svg class="icon icon-search">
+                                <use xlink:href="img/sprite.svg#icon-search"/>
+                            </svg>
+                            <span class="btn_text">search</span>
+                        </button>
+                    </form>
+                        <!-- Create delete all saved recipes button  -->
+                    <button class="btn btn_remove grad-orange scaled hide">
+                        <span class="btn_text">Remove saved recipes</span>
                     </button>
-                </form>
-                    <!-- Create delete all saved recipes button  -->
-                <button class="btn btn_remove grad-orange scaled hide">
-                    <span class="btn_text">Remove saved recipes</span>
-                </button>
-                <div class="likes hide">
-                    <button class="btn_heart scaled">
-                        <svg class="icon icon-heart">
-                            <use xlink:href="img/sprite.svg#icon-heart"/>
-                        </svg>
-                    </button>
-                    <ul class="forkify_list likes_list">
-                    </ul>
+                    <div class="likes hide">
+                        <button class="btn_heart scaled">
+                            <svg class="icon icon-heart">
+                                <use xlink:href="img/sprite.svg#icon-heart"/>
+                            </svg>
+                        </button>
+                        <ul class="forkify_list likes_list">
+                        </ul>
+                    </div>
+                    <p class="forkify_header_message forkify_header_textual"></p>
                 </div>
-            </div>
-            <!-- END forkify_header -->
-            <!-- BEGIN forkify_main -->
-             <div class="forkify_main">
-                <!-- BEGIN forkify_results -->
-                <div class="forkify_aside results">
-                    <ul class="forkify_list results_list">
+                <!-- END forkify_header -->
+                <!-- BEGIN forkify_main -->
+                <div class="forkify_main">
+                    <!-- BEGIN forkify_results -->
+                    <div class="forkify_aside results">
+                        <ul class="forkify_list results_list">
+                        </ul>
+                        <div class="results_pages">
+                        </div>
+                    </div>
+                    <!-- END forkify_results -->
+                    <!-- BEGIN recipe -->
+                    <div class="recipe bg-gray">
+                    </div>
+                    <!-- END recipe -->
+                <!-- BEGIN shopping -->
+                <div class="forkify_aside shopping">
+                    <h2 class="shopping_title">my shopping list</h2>
+                    <ul class="shopping_list">
                     </ul>
-                    <div class="results_pages">
-                        <!-- <div class="results_pages_amout bg-gray">
-                            <span class="results_pages_current">45</span>
-                            <span class="results_pages_separator">/</span>
-                            <span class="results_pages_total">90</span>
-                        </div> -->
-                        <!--     <button class="btn btn_pagination btn_inline bg-gray btn-round ${type.btnClass}" data-page="${page}">
-                                    <span class="btn_text">Page ${page}</span>
-                                    <svg class="icon ${type.svgIcon}">
-                                        <use href="img/sprite.svg#${type.svgIcon}"></use>
-                                    </svg>
-                                </button> -->
+                    <div class="shopping_footer">
+                        <button class="btn btn_sm btn_shop grad-orange scaled hide">
+                            <span class="btn_text">Save shop list</span>
+                        </button>
                     </div>
                 </div>
-                <!-- END forkify_results -->
-                <!-- BEGIN recipe -->
-                <div class="recipe bg-gray">
+                <!-- END shopping -->
                 </div>
-                <!-- END recipe -->
-            <!-- BEGIN shopping -->
-             <div class="forkify_aside shopping">
-                <h2 class="shopping_title">my shopping list</h2>
-                <ul class="shopping_list">
-                </ul>
-                <div class="shopping_footer">
-                    <button class="btn btn_sm btn_shop grad-orange scaled hide">
-                        <span class="btn_text">Save shop list</span>
-                    </button>
-                </div>
+                <!-- END forkify_main -->
             </div>
-            <!-- END shopping -->
-            </div>
-            <!-- END forkify_main -->
-        </div>
             <!-- END forkify -->
+        </div>
+        <!-- END forkify_wrapper -->
     </div>
     <!-- END wrapper -->
     <script  src="js/lib/lib.min.js"></script>
